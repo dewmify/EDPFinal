@@ -9,6 +9,9 @@ namespace EDPFinal.Models
     {
         public int BookingID { get; set; }
         public DateTime BookingTime { get; set; }
-        
+        //CourseID from Course model
+        public int CourseID { get; set; }
+        //StudentID from Student model
+        public int StudentID { get; set; }
     }
 }
