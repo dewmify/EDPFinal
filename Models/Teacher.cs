@@ -8,10 +8,7 @@ namespace EDPFinal.Models
 {
     public class Teacher : User
     {   
-        public int TeacherID { get; set; }
         [Required]
-        public string TeacherName { get; set; }
-        [Required]
-        public string TeacherEmail { get; set; }
+        public bool TeacherStatus { get; set; }
     }
 }
