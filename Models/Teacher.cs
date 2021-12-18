@@ -9,6 +9,15 @@ namespace EDPFinal.Models
     public class Teacher : User
     {   
         [Required]
-        public bool TeacherStatus { get; set; }
+        public bool teacherStatus { get; set; }
+
+        [Required]
+        public bool registrationStatus { get; set; }
+
+        [Required]
+        public bool creationStatus { get; set; }
+
+        [Required]
+        public bool contentRevStatus { get; set; }
     }
 }
