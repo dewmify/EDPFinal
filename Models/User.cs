@@ -20,5 +20,9 @@ namespace EDPFinal.Models
         public string userPassword { get; set; }
         public string userPhoneNo { get; set; }
 
+        [Required]
+        
+        public bool registrationStatus { get; set; }
+
     }
 }

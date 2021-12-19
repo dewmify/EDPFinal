@@ -12,9 +12,6 @@ namespace EDPFinal.Models
         public bool teacherStatus { get; set; }
 
         [Required]
-        public bool registrationStatus { get; set; }
-
-        [Required]
         public bool creationStatus { get; set; }
 
         [Required]
