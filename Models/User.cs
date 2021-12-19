@@ -10,12 +10,15 @@ namespace EDPFinal.Models
     {
         public int userID { get; set; }
 
-        [Required]
+        [Required, RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Invalid email")]
         public string userEmail { get; set; }
 
-        [Required]
-        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
+        [Required, StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string userName { get; set; }
+        
+        [Required]
+        public string userPassword { get; set; }
+        public string userPhoneNo { get; set; }
 
     }
 }
