@@ -17,5 +17,9 @@ namespace EDPFinal.Models
         [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string userName { get; set; }
 
+        [Required]
+        
+        public bool registrationStatus { get; set; }
+
     }
 }
