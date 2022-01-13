@@ -9,5 +9,6 @@ namespace EDPFinal.Models
     {
         public int adminID {get; set;}
         public string adminEmail {get; set;}
+        public string adminPassword { get; set; }
     }
 }

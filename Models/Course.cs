@@ -10,9 +10,9 @@ namespace EDPFinal.Models
     {
         public int courseID { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "Course Title cannot be longer than 100 characters.")]
+        [StringLength(100, ErrorMessage = "Course Title cannot be longer than 100 characters.")]
         public string courseTitle { get; set; }
-        [StringLength(300, ErrorMessage ="Course Information cannot be longer than 500 characters")]
+        [StringLength(500, ErrorMessage ="Course Information cannot be longer than 500 characters")]
         public string courseInfo { get; set; }
         [Required]
         public int coursePrice { get; set; }
