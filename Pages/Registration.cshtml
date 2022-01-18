@@ -1,0 +1,29 @@
+﻿@page
+@model EDPFinal.Pages.RegistrationModel
+@{
+}
+
+<body>
+    <div class="titleBox">
+        <p>Sign up</p>
+    </div>
+    <form id="form1" runat="server" class="formBox" method="post">
+        <div class="childformBox">
+            <span class="labelBox">Email</span>
+            <input type="text"  placeholder="Enter your Email" name="email"/>          
+        </div>
+          <div class="childformBox">
+            <span class="labelBox">Your Name (Maximum 15 words)</span>
+            <input type="text"  placeholder="Enter your name" name="username"/>          
+        </div>
+        <div class="childformBox">
+            <span class="labelBox">Password</span>
+            <input type="password"  placeholder="Enter your password" name="password"/>          
+        </div>
+        <div class="childformBox">
+            <span class="labelBox">Confirm password</span>
+            <input type="password"  placeholder="Confirm your password" name="againpwd"/>          
+        </div>
+           <a href="Login.aspx" style="font-size:20px;">Already have an account? Sign in here</a><asp:Button ID="Button1" runat="server" BackColor="#990099" Font-Size="Large" ForeColor="White" Height="46px" OnClick="Button1_Click" Text="Sign up" Width="132px" />
+    </form>
+</body>
