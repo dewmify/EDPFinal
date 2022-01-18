@@ -6,6 +6,8 @@ namespace EDPFinal.Pages
 {
     public class LoginModel : PageModel
     {
+        [BindProperty]
+        public string Login { get; set; }
             public void OnGet()
         {
         }
