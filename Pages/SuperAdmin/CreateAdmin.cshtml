@@ -54,7 +54,7 @@
             <span asp-validation-for="MyEmployee.Department" class="text-danger"></span>
         </div>
     *@
-    <div>
+<div>
         <label class="col-sm-2 col-form-label">Department:</label>
         @Html.DropDownList("Myemployee.Department", new SelectList(Enum.GetValues(typeof(Models.Dept))), "--Select an option--")
         <span asp-validation-for="MyEmployee.Department" class="text-danger"></span>
@@ -72,4 +72,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
