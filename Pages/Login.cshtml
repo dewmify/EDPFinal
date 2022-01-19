@@ -20,10 +20,12 @@
          <br />
          <button a href="Homepage" type="submit">Log in</button>
         <br />
+        <p>@Model.errormessage</p>
         <br />
          <div class="bottomBox">
             <a class="fonttip">Forget  password?</a><asp:Button ID="Button1" runat="server" BackColor="#993399" Font-Size="Larger" ForeColor="White" Height="44px" OnClick="Button1_Click" Text="Login" Width="144px" />
         </div>
+
     <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
     <a href="Registration" style="font-size:20px;">Dont have an account? Sign up here</a>
     </div>

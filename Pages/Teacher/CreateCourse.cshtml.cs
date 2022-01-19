@@ -12,8 +12,14 @@ namespace EDPFinal.Pages.Teacher
 {
     public class CreateCourseModel : PageModel
     {
+        private readonly CourseService _svc;
+        public CreateCourseModel(CourseService service)
+        {
+            _svc = service;
+        }
         [BindProperty]
         public Course MyCourses { get; set; }
+        
         public void OnGet()
         {
         }
@@ -21,10 +27,12 @@ namespace EDPFinal.Pages.Teacher
         {
             if (ModelState.IsValid)
             {
-                //Use session if req
-                //HttpContext.Session.SetString("SSTitle", MyCourses.courseTitle);
-                //Redirect to Teachers Details Page
-                return RedirectToPage("");
+                return Page();
+                /*if (_svc.AddCourse(MyCourses))
+                {
+                    return RedirectToPage("");
+                }*/
+                    
             }
             return Page();
         }
