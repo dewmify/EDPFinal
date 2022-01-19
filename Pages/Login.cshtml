@@ -6,22 +6,26 @@
 <body>
     <form id="form1" runat="server" class="formBox" method="post">
     <div class="titleBox">
-        <p>Log In</p>
+        <h2>Log In</h2>
     </div>
             <div class="usernameBox">
-                <span class="labelBox">Email/Phone number</span>
+                <span class="labelBox">Email/Phone number</span><br />
                 <input type="text" name="username" class="userinput" placeholder="Please input your username"/>
             </div>
+            <br />
         <div class="passwordBox">
-            <span class="labelBox">Password</span>
+            <span class="labelBox">Password</span><br />
             <input type="password" name="password" class="pwdinput" placeholder="Please input your password" />
          </div>
+         <br />
          <button a href="Homepage" type="submit">Log in</button>
-        <div class="bottomBox">
+        <br />
+        <br />
+         <div class="bottomBox">
             <a class="fonttip">Forget  password?</a><asp:Button ID="Button1" runat="server" BackColor="#993399" Font-Size="Larger" ForeColor="White" Height="44px" OnClick="Button1_Click" Text="Login" Width="144px" />
         </div>
     <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
-    <a href="Registration">Dont have an account? Sign up here</a>
+    <a href="Registration" style="font-size:20px;">Dont have an account? Sign up here</a>
     </div>
     </form>
     </body>
