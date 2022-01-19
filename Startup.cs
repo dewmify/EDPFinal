@@ -26,6 +26,7 @@ namespace EDPFinal
         {
             //services.AddDbContext<SkillsLahDBContext>();
             services.AddRazorPages();
+            services.AddDbContext<CourseDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
