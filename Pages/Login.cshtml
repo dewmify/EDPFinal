@@ -3,5 +3,26 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+<body>
+    <form id="form1" runat="server" class="formBox" method="post">
+    <div class="titleBox">
+        <p>Log In</p>
+    </div>
+            <div class="usernameBox">
+                <span class="labelBox">Email/Phone number</span>
+                <input type="text" name="username" class="userinput" placeholder="Please input your username"/>
+            </div>
+        <div class="passwordBox">
+            <span class="labelBox">Password</span>
+            <input type="password" name="password" class="pwdinput" placeholder="Please input your password" />
+         </div>
+         <button type="submit">Log in</button>
+        <div class="bottomBox">
+            <a class="fonttip">Forget  password?</a><asp:Button ID="Button1" runat="server" BackColor="#993399" Font-Size="Larger" ForeColor="White" Height="44px" OnClick="Button1_Click" Text="Login" Width="144px" />
+        </div>
+    <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
+    <a href="Registration">Dont have an account? Sign up here</a>
+    </div>
+    </form>
+    </body>
 
