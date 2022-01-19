@@ -1,0 +1,31 @@
+﻿@page
+@model EDPFinal.Pages.SuperAdmin.AdminListModel
+@{
+    ViewData["Title"] = "Admin List Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.alladmins[0].ID)</th>
+            <th>@Html.DisplayNameFor(model => model.alladmins[0].Email)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.alladmins != null)
+            {
+                @foreach (var item in Model.alladmins)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <a asp-page="/SuperAdmin/Detail" asp-route-id="@item.ID">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
