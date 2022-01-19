@@ -25,10 +25,4 @@ namespace EDPFinal.Models
         [Required]
         public bool courseFormat { get; set; }
     }
-
-    //public List<Course> GetAllCourses()
-    //{
-      //  List<Course> AllCourses = new List<Course>();
-        //AllCourses = _context.
-    //}
 }
