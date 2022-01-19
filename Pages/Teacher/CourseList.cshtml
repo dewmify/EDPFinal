@@ -1,0 +1,41 @@
+﻿@page
+@model EDPFinal.Pages.Teacher.CourseListModel
+@{
+    ViewData["Title"] = "Course List";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseTitle)</th>
+            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseGenre)</th>
+            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseFormat)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.AllCourses != null)
+            {
+                @foreach (var cor in Model.AllCourses)
+                {
+                    <tr>
+                        <td>@cor.courseTitle</td>
+                        <td>@cor.courseGenre</td>
+                        @{ if (cor.courseFormat == false)
+                            {
+                                <td>Video</td>
+                                }
+                            else if (cor.courseFormat == true)
+                            {
+                                <td>Live</td>
+                                }
+                            }
+                        <td>
+                            <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

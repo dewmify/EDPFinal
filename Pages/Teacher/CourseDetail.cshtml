@@ -1,0 +1,24 @@
+﻿@page
+@model EDPFinal.Pages.Teacher.CourseDetailModel
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<form method="post">
+    <div>
+        <label class="col-sm--2 col-form-label">Course Title:</label>
+        <label>@Model.MyCourse.courseTitle</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Genre:</label>
+        <label>@Model.MyCourse.courseGenre</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Format:</label>
+        <label>@Model.MyCourse.courseFormat</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Details:</label>
+        <label>@Model.MyCourse.courseInfo</label>
+    </div>
+</form>
