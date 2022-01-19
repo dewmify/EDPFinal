@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 using EDPFinal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace EDPFinal.Pages.SuperAdmin
 {
     public class EditAdminModel : PageModel
     {
+        private readonly ILogger<EditAdminModel> _logger;
         private readonly Services.AdminService _svc;
 
-        public EditAdminModel(Services.AdminService service)
+        public EditAdminModel(ILogger<EditAdminModel> logger, Services.AdminService service)
         {
+            _logger = logger;
             _svc = service;
         }
         [BindProperty]
@@ -40,7 +43,8 @@ namespace EDPFinal.Pages.SuperAdmin
             }
             if (_svc.UpdateAdmin(MyAdmin) == true)
             {
-                return RedirectToPage("./AdminList");
+
+                return RedirectToPage("AdminList");
             }
             else
                 return BadRequest();

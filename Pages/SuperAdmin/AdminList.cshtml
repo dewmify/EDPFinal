@@ -21,6 +21,12 @@
                         <td>@item.ID</td>
                         <td>@item.Email</td>
                         <td>
+                            <a asp-page="/SuperAdmin/EditAdmin" asp-route-id="@item.ID">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-route-id="@item.ID" onclick="return confirm('Are you sure you want to delete?')" asp-page="/SuperAdmin/DeleteAdmin">Delete</a>
+                        </td>
+                        <td>
                             <a asp-page="/SuperAdmin/AdminDetail" asp-route-id="@item.ID">View</a>
                         </td>
                     </tr>

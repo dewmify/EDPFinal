@@ -17,6 +17,7 @@ namespace EDPFinal.Pages.SuperAdmin
 
         private readonly ILogger<AdminListModel> _logger;
         private AdminService _svc;
+
         public AdminListModel(ILogger<AdminListModel> logger, AdminService service)
         {
             _logger = logger;
