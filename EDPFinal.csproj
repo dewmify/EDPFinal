@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Admin\" />
+    <Folder Include="Pages\Teacher\" />
   </ItemGroup>
 
 </Project>
