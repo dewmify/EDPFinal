@@ -9,8 +9,6 @@ namespace EDPFinal.Services
 {
     public class AdminService
     {
-        private static List<Admin> adminList;
-
         private Models.SLDbContext _context;
         public AdminService(Models.SLDbContext context)
         {
