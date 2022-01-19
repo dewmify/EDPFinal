@@ -12,59 +12,24 @@
 
 
     <div>
-        <label class="col-sm-2 col-form-label">Name:</label>
-        <input asp-for="MyEmployee.Name" />
-        <span asp-validation-for="MyEmployee.Name" class="text-danger"></span>
+        <label class="col-sm-2 col-form-label">Admin ID:</label>
+        <input asp-for="MyAdmin.ID" />
+        <span asp-validation-for="MyAdmin.ID" class="text-danger"></span>
 
     </div>
     <div>
-        <label class="col-sm-2 col-form-label">Birth Date:</label>
-        <input asp-for="MyEmployee.BirthDate" />
-        <span asp-validation-for="MyEmployee.BirthDate" class="text-danger"></span>
-    </div>
-
-    @* -- using html radio button type ------
-            <div>
-            <label class="control-label">Gender:</label>
-            <input type="radio" id="male" name="MyEmployee.Gender" value="M" />
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="MyEmployee.Gender" value="F" />
-            <label for="female">Female</label>
-            <span asp-validation-for="MyEmployee.Gender" class="text-danger"></span>
-
-        </div>*@
-
-    <div>
-        <label class="col-sm-2 col-form-label">Gender:</label>
-        @Html.RadioButton("MyEmployee.Gender", "M") <span>Male</span>
-        @Html.RadioButton("MyEmployee.Gender", "F") <span>Female</span>
-        <span asp-validation-for="MyEmployee.Gender" class="text-danger"></span>
-
-    </div>
-    @*  -- using html radio button type ------
-        <div>
-            <label class="control-label">Department:</label>
-            <select name="MyEmployee.Department" >
-                <option value="">--Select an option--</option>
-                <option value="Finance">Finance</option>
-                <option value="HR">HR</option>
-                <option value="IT">IT</option>
-                <option value="Sales">Sales</option>
-            </select>
-            <span asp-validation-for="MyEmployee.Department" class="text-danger"></span>
-        </div>
-    *@
-    <div>
-        <label class="col-sm-2 col-form-label">Department:</label>
-        @Html.DropDownList("Myemployee.Department", new SelectList(Enum.GetValues(typeof(Models.Dept))), "--Select an option--")
-        <span asp-validation-for="MyEmployee.Department" class="text-danger"></span>
-
+        <label class="col-sm-2 col-form-label">Admin Email:</label>
+        <input asp-for="MyAdmin.Email" />
+        <span asp-validation-for="MyAdmin.Email" class="text-danger"></span>
     </div>
     <div>
-        <label class="col-sm-2 col-form-label">Salary</label>
-        <input id="Salary" asp-for="MyEmployee.Salary" />
-        <span asp-validation-for="MyEmployee.Salary" class="text-danger"></span>
+        <label class="col-sm-2 col-form-label">Admin Password:</label>
+        <input asp-for="MyAdmin.Password" />
+        <span asp-validation-for="MyAdmin.Password" class="text-danger"></span>
     </div>
+
+    
+    
     <div class="col-sm-10">
         <input id="create" type="submit" value="Create" class="btn btn-primary" />
     </div>
