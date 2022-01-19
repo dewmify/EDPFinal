@@ -6,8 +6,10 @@ namespace EDPFinal.Pages
 {
     public class RegistrationModel : PageModel
     {
-        [BindProperty]
-        public string Email { get; set; }
+        [BindProperty] public string Email { get; set; }
+        [BindProperty] public string Password { get;set;}
+        [BindProperty] public string Name { get; set; }
+        [BindProperty] public string Phonenum { get; set; }
         //protected void Button1_Click(object sender, EventArgs e)
         //{
         //    string strName = Request.Form["username"];
