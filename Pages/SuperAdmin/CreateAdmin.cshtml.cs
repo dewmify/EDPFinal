@@ -22,7 +22,7 @@ namespace EDPFinal.Pages.SuperAdmin
             if (ModelState.IsValid)
             {
                 HttpContext.Session.SetString("SSEmail", MyAdmin.Email);
-                return RedirectToPage("AdminList");
+                return RedirectToPage("AdminConfirm");
             }
             return Page();
         }
