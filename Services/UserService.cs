@@ -40,14 +40,15 @@ namespace EDPFinal.Services
             
             return true;
         }
+
         public User GetUserByEmail(string email)
         {
             var userObject = _context.Users.SingleOrDefault(o => o.userEmail == email);
             return userObject;
         }
-        public User GetUserByPhonenum(string email)
+        public User GetUserByPhonenum(string userPhoneNo)
         {
-            var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == email);
+            var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == userPhoneNo);
             return userObject;
         }
 

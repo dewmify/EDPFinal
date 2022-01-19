@@ -22,13 +22,13 @@ namespace EDPFinal.Pages
         [BindProperty] public string Phonenum { get; set; }
 
         public string errormessage { get; set; }
-        public IActionResult OnPost()
+        public IActionResult OnPost(
         {
 
             User user = _context.GetUserByEmail(Email);
             if (user == null || user.userPassword != Password)
             {
-                errormessage = "Email or Password is incorrect!";
+               errormessage = "Email or Password is incorrect!";
                 return Page();
             }
 

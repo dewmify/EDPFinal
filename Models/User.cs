@@ -25,7 +25,9 @@ namespace EDPFinal.Models
         public string userPhoneNo { get; set; }
 
         [Required]
-        public bool registrationStatus { get; set; } = false;
+        public bool registrationStatus { get; set; }
+
+        public bool userType { get; set; }
 
     }
 }
