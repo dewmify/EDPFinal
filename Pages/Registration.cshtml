@@ -1,31 +1,45 @@
 ﻿@page
 @model EDPFinal.Pages.RegistrationModel
 @{
+    ViewData["Title"] = "Registration";
 }
 
 <body>
     <div class="titleBox">
-        <p>Sign up</p>
+        <h2>Sign up</h2>
+        <br />
     </div>
     <form id="form1" runat="server" class="formBox" method="post">
         <div class="childformBox">
-            <span class="labelBox">Email</span>
+            <span class="labelBox">Email</span><br />
             <input type="text"  placeholder="Enter your Email" name="email"/>          
         </div>
+        <br />
           <div class="childformBox">
-            <span class="labelBox">Your Name (Maximum 15 words)</span>
+            <span class="labelBox">Your Name (Maximum 15 words)</span><br />
             <input type="text"  placeholder="Enter your name" name="username"/>          
         </div>
+        <br />
         <div class="childformBox">
-            <span class="labelBox">Password</span>
+            <span class="labelBox">Phone number</span><br />
+            <input type="text"  placeholder="8 digits phone number" name="phonenum"/>          
+        </div>
+        <br />
+        <div class="childformBox">
+            <span class="labelBox">Password</span><br />
             <input type="password"  placeholder="Enter your password" name="password"/>          
         </div>
+        <br />
         <div class="childformBox">
-            <span class="labelBox">Confirm password</span>
+            <span class="labelBox">Confirm password</span><br />
             <input type="password"  placeholder="Confirm your password" name="againpwd"/>          
+       <br />
        <br />
        <button type="submit">Sign Up</button>
         </div>
+        <br />
+        <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
            <a href="Login" style="font-size:20px;">Already have an account? Sign in here</a><asp:Button ID="Button1" runat="server" BackColor="#990099" Font-Size="Large" ForeColor="White" Height="46px" OnClick="Button1_Click" Text="Sign up" Width="132px" />
-    </form>
+        </div>
+       </form>
 </body>
