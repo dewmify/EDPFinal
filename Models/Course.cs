@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace EDPFinal.Models
+
 {
+
     public class Course
     {
         public int courseID { get; set; }
@@ -21,4 +25,10 @@ namespace EDPFinal.Models
         [Required]
         public bool courseFormat { get; set; }
     }
+
+    //public List<Course> GetAllCourses()
+    //{
+      //  List<Course> AllCourses = new List<Course>();
+        //AllCourses = _context.
+    //}
 }

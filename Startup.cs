@@ -26,6 +26,8 @@ namespace EDPFinal
         {
             //services.AddDbContext<SkillsLahDBContext>();
             services.AddRazorPages();
+            services.AddSession();
+            services.AddTransient<Services.AdminService>();
             services.AddDbContext<CourseDbContext>();
         }
 
@@ -45,7 +47,7 @@ namespace EDPFinal
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
