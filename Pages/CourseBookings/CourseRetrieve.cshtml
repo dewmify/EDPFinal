@@ -1,0 +1,33 @@
+﻿@page
+@model EDPFinal.Pages.CourseBookings.CourseRetrieveModel
+@{
+    ViewData["Title"] = "Course List Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allCourses[0].courseTitle)</th>
+            <th>@Html.DisplayNameFor(model => model.allCourses[0].courseGenre)</th>
+            <th>@Html.DisplayNameFor(model => model.allCourses[0].coursePrice)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allCourses != null)
+            {
+                @foreach (var item in Model.allCourses)
+                {
+                    <tr>
+                        <td>@item.courseTitle</td>
+                        <td>@item.courseGenre</td>
+                        <td>@item.coursePrice</td>
+                        <td>
+                            <a asp-page="/CourseBookings/CoursePage" asp-route-id="@item.courseTitle">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
