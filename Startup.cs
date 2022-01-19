@@ -26,6 +26,8 @@ namespace EDPFinal
         {
             //services.AddDbContext<SkillsLahDBContext>();
             services.AddRazorPages();
+            services.AddSession();
+            services.AddTransient<Services.AdminService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
