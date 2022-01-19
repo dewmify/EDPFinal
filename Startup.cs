@@ -28,6 +28,7 @@ namespace EDPFinal
             services.AddRazorPages();
             services.AddSession();
             services.AddTransient<Services.AdminService>();
+            services.AddDbContext<CourseDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
