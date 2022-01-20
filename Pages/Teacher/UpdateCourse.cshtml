@@ -7,8 +7,12 @@
 <form method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div>
+        <label class="col-sm-2 col-form-label">Course ID:</label>
+        <input asp-for="MyCourses.courseID" readyonly hidden/>
+    </div>
+    <div>
         <label class="col-sm-2 col-form-label">Course Title:</label>
-        <input asp-for="MyCourses.courseTitle" readonly/>
+        <input asp-for="MyCourses.courseTitle" readonly />
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Genre:</label>
@@ -28,7 +32,7 @@
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Price:</label>
-        <input asp-for="MyCourses.coursePrice" readonly/>
+        <input asp-for="MyCourses.coursePrice" readonly />
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Details:</label>

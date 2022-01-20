@@ -48,11 +48,11 @@ namespace EDPFinal.Services
         public bool UpdateCourse(Course thecourse)
         {
             bool updated = true;
-            //_context.Attach(thecourse).State = EntityState.Modified;
+            _context.Attach(thecourse).State = EntityState.Modified;
 
             try
             {
-                _context.Update(thecourse);
+                //_context.Update(thecourse);
                 _context.SaveChanges();
                 updated = true;
             }
