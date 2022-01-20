@@ -1,0 +1,41 @@
+﻿@page
+@model EDPFinal.Pages.TeacherGuides.CreateGuideModel
+@{
+}
+
+<h1>Create Guide</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Guide ID:</label>
+        <input asp-for="MyGuide.guideID" />
+        <span asp-validation-for="MyGuide.guideID" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Guide Title:</label>
+        <input asp-for="MyGuide.guideTitle" />
+        <span asp-validation-for="MyGuide.guideTitle" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Guide Estimated Reading Time:</label>
+        <input asp-for="MyGuide.guideETR" />
+        <span asp-validation-for="MyGuide.guideETR" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Guide Information:</label>
+        <input asp-for="MyGuide.guideInfo" />
+        <span asp-validation-for="MyGuide.guideInfo" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="col-sm-10">
+        <input id="create" type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

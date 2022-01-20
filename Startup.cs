@@ -30,7 +30,10 @@ namespace EDPFinal
             services.AddTransient<Services.AdminService>();
             services.AddDbContext<CourseDbContext>();
             services.AddDbContext<UserDbContext>();
+            services.AddDbContext<BookingDBContext>();
+            services.AddDbContext<GuidesDbContext>();
             services.AddTransient<Services.UserService>();
+            services.AddTransient<Services.GuideService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
