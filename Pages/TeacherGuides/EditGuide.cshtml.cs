@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
+using EDPFinal.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.SuperAdmin
+namespace EDPFinal.Pages.TeacherGuides
 {
-    public class EditAdminModel : PageModel
+    public class EditGuideModel : PageModel
     {
-        private readonly ILogger<EditAdminModel> _logger;
-        private readonly Services.AdminService _svc;
-
-        public EditAdminModel(ILogger<EditAdminModel> logger, Services.AdminService service)
+        private readonly GuideService _svc;
+        public EditGuideModel(GuideService service)
         {
-            _logger = logger;
             _svc = service;
         }
         [BindProperty]
-        public Admin MyAdmin { get; set; }
+        public Guides MyGuide { get; set; }
 
         public IActionResult OnGet(string id)
         {
@@ -28,8 +26,8 @@ namespace EDPFinal.Pages.SuperAdmin
             {
                 return NotFound();
             }
-            MyAdmin = _svc.GetAdminById(id);
-            if(MyAdmin == null)
+            MyGuide = _svc.GetGuideById(id);
+            if (MyGuide == null)
             {
                 return NotFound();
             }
@@ -37,17 +35,18 @@ namespace EDPFinal.Pages.SuperAdmin
         }
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
-            if (_svc.UpdateAdmin(MyAdmin) == true)
+            if (_svc.UpdateGuide(MyGuide) == true)
             {
-
-                return RedirectToPage("AdminList");
+                return RedirectToPage("../Index");
             }
             else
+            {
                 return BadRequest();
+            }
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@page
+@model EDPFinal.Pages.TeacherGuides.GuideDetailsModel
+@{
+}
+
+<h1>@Model.MyGuide.guideTitle</h1>
+<form method="post">
+    
+    <div>
+        <label class="col-sm--2 col-form-label">Guide ID:</label>
+        <label>@Model.MyGuide.guideID</label>
+        <label class="col-sm-4 col-form-label">Estimated Reading Time:    @Model.MyGuide.guideETR</label>
+    </div>
+    <h1>___________________________________________________________________</h1>
+    <div>
+        <p style="font-size:25px">@Model.MyGuide.guideInfo</p>
+    </div>
+</form>

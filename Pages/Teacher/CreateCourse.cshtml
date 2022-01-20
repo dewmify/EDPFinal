@@ -23,8 +23,13 @@
         <span asp-validation-for="MyCourses.courseFormat" class="text-danger"></span>
     </div>
     <div>
+        <label class="col-sm-2 col-form-label">Course Price:</label>
+        <input asp-for="MyCourses.coursePrice" />
+        <span asp-validation-for="MyCourses.coursePrice" class="text-danger"></span>
+    </div>
+    <div>
         <label class="col-sm-2 col-form-label">Course Details:</label>
-        <input asp-for="MyCourses.courseInfo" placeholder="Maximum of 500 Characters"/>
+        <input asp-for="MyCourses.courseInfo" placeholder="Maximum of 500 Characters" />
         <span asp-validation-for="MyCourses.courseInfo" class="text-danger"></span>
     </div>
     <div class="col-sm-10">

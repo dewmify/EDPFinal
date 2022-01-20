@@ -56,6 +56,7 @@ namespace EDPFinal.Services
             _context.Attach(theadmin).State = EntityState.Modified;
             try
             {
+                /*_context.Update(theadmin);*/
                 _context.SaveChanges();
                 updated = true;
             }
@@ -80,7 +81,6 @@ namespace EDPFinal.Services
             {
                 _context.Remove(theadmin);
                 _context.SaveChanges();
-                deleted = true;
             }
             catch (DbUpdateConcurrencyException)
             {
