@@ -10,28 +10,25 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EDPFinal.Pages.Teacher
 {
-    public class CreateCourseModel : PageModel
+    public class DeleteCourseModel : PageModel
     {
         [BindProperty]
         public Course MyCourses { get; set; }
         private readonly CourseService _svc;
-        public CreateCourseModel(CourseService service)
+        public DeleteCourseModel(CourseService service)
         {
             _svc = service;
         }
-
-        public void OnGet()
+        public IActionResult OnGet(int id)
         {
-        }
-        public IActionResult OnPost()
-        {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                if (_svc.AddCourse(MyCourses))
-                {
-                    return RedirectToPage("./CourseList");
-                }
-                    
+                return NotFound();
+            }
+            //MyCourses = _svc.DeleteCourse(id);
+            if (MyCourses == null)
+            {
+                return NotFound();
             }
             return Page();
         }

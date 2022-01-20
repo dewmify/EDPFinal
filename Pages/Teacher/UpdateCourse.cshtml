@@ -1,0 +1,41 @@
+﻿@page
+@model EDPFinal.Pages.Teacher.UpdateCourseModel
+@{
+    ViewData["Title"] = "Update Course";
+}
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Title:</label>
+        <input asp-for="MyCourses.courseTitle" readonly/>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Genre:</label>
+        <input asp-for="MyCourses.courseGenre" readonly />
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Format:</label>
+        @{ if (Model.MyCourses.courseFormat == false)
+            {
+                <input value="Video" readonly />
+            }
+            else if (Model.MyCourses.courseFormat == true)
+            {
+                <input value="Live" readonly />
+            }
+        }
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Price:</label>
+        <input asp-for="MyCourses.coursePrice" readonly/>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Course Details:</label>
+        <input asp-for="MyCourses.courseInfo" placeholder="Maximum of 500 Characters" />
+        <span asp-validation-for="MyCourses.courseInfo" class="text-danger"></span>
+    </div>
+    <div class="col-sm-10">
+        <input id="create" type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>

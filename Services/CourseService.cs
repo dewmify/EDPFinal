@@ -29,29 +29,30 @@ namespace EDPFinal.Services
 
         private bool CourseExists(int id)
         {
-            return _context.Courses.Any(e => e.courseID == id);
+            return _context.Course.Any(e => e.courseID == id);
         }
 
         public Course GetCourse(int id)
         {
-            var cor = _context.Courses.SingleOrDefault(o => o.courseID == id);
+            var cor = _context.Course.SingleOrDefault(o => o.courseID == id);
             return cor;
         }
 
         public List<Course> GetAllCourses()
         {
             List<Course> AllCourses = new List<Course>();
-            AllCourses = _context.Courses.ToList();
+            AllCourses = _context.Course.ToList();
             return AllCourses;
         }
 
         public bool UpdateCourse(Course thecourse)
         {
             bool updated = true;
-            _context.Attach(thecourse).State = EntityState.Modified;
+            //_context.Attach(thecourse).State = EntityState.Modified;
 
             try
             {
+                _context.Update(thecourse);
                 _context.SaveChanges();
                 updated = true;
             }

@@ -7,9 +7,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseTitle)</th>
-            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseGenre)</th>
-            <th>@Html.DisplayNameFor(model => model.AllCourses[0].courseFormat)</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Format</th>
             <th></th>
         </tr>
     </thead>
@@ -32,6 +32,7 @@
                             }
                         <td>
                             <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
+                            <a asp-page="/Teacher/UpdateCourse" asp-route-id="@cor.courseID">Update</a>
                         </td>
                     </tr>
                 }

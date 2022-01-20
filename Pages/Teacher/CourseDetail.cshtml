@@ -15,7 +15,14 @@
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Format:</label>
-        <label>@Model.MyCourse.courseFormat</label>
+        @{ if (Model.MyCourse.courseFormat == false)
+            {
+                <label>Video</label>
+                }else if(Model.MyCourse.courseFormat == true)
+            {
+                <label>Live</label>
+            }
+            }
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Details:</label>
