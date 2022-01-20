@@ -9,8 +9,8 @@ namespace EDPFinal.Services
 {
     public class CourseService
     {
-        private Models.CourseDbContext _context;
-        public CourseService(Models.CourseDbContext context)
+        private CourseDbContext _context;
+        public CourseService(CourseDbContext context)
         {
             _context = context;
         }
