@@ -5,6 +5,7 @@ namespace EDPFinal.Pages
 {
     public class HomepageModel : PageModel
     {
+
         public void OnGet()
         {
         }

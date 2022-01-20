@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace EDPFinal.Services
@@ -26,9 +27,9 @@ namespace EDPFinal.Services
             return AllUsers;
         }
 
-        public User GetUserById(long id)
+        public User GetUserById(int id)
         {
-            var userObject = _context.Users.SingleOrDefault(o => o.userID == id);
+            var userObject = _context.Users.Where(o => o.userID == id).FirstOrDefault();
             return userObject;
         }
 
@@ -40,14 +41,15 @@ namespace EDPFinal.Services
             
             return true;
         }
+
         public User GetUserByEmail(string email)
         {
             var userObject = _context.Users.SingleOrDefault(o => o.userEmail == email);
             return userObject;
         }
-        public User GetUserByPhonenum(string email)
+        public User GetUserByPhonenum(string userPhoneNo)
         {
-            var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == email);
+            var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == userPhoneNo);
             return userObject;
         }
 
@@ -60,6 +62,20 @@ namespace EDPFinal.Services
                 return true;
             }
             catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+        }
+        public bool DestroyUser(int id)
+        {
+            try
+            {
+                var userObject = GetUserById(id);
+                _context.Remove(userObject);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (DBConcurrencyException)
             {
                 return false;
             }

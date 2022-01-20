@@ -21,6 +21,6 @@ namespace EDPFinal.Models
             optionsBuilder.UseSqlServer(connectionString);
         }
         //Map entity to tablename in database
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<Course> Course { get; set; }
     }
 }
