@@ -1,5 +1,6 @@
 using EDPFinal.Models;
 using EDPFinal.Services;
+using EDPFinal.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -17,7 +18,10 @@ namespace EDPFinal.Pages
         }
 
         [BindProperty] public string Email { get; set; }
-        [BindProperty] public string Password { get; set; }
+        
+        [BindProperty] 
+        
+        public string Password { get; set; }
         [BindProperty] public string Name { get; set; }
         [BindProperty] public string Phonenum { get; set; }
 
@@ -26,7 +30,7 @@ namespace EDPFinal.Pages
         {
 
             User user = _context.GetUserByEmail(Email);
-            if (user == null || user.userPassword != Password)
+            if (user == null || user.userPassword != Md5.GetMD5( Password))
             {
                errormessage = "Email or Password is incorrect!";
                 return Page();
@@ -35,7 +39,11 @@ namespace EDPFinal.Pages
             HttpContext.Session.SetString("ID", user.userID.ToString());
             return RedirectToPage("/Homepage");
         }
-
+        public IActionResult OnGetLogOut()
+        {
+            HttpContext.Session.Remove("ID");
+            return Page();
+        }
         public void OnGet()
         {
         }

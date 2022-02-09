@@ -27,6 +27,7 @@ namespace EDPFinal
             services.AddDbContext<SLDbContext>();
             services.AddRazorPages();
             services.AddSession();
+            services.AddHttpContextAccessor();
             services.AddTransient<Services.AdminService>();
             services.AddDbContext<CourseDbContext>();
             services.AddDbContext<UserDbContext>();

@@ -1,0 +1,31 @@
+﻿@page
+@model EDPFinal.Pages.UserDetailModel
+@{
+    Layout = "_LeftNav";
+    ViewData["Title"] = "User Details";
+}
+
+
+<div class="titleBox">
+    <h2>Details</h2>
+    <br />
+</div>
+<form class="formBox" method="post">
+    <div class="childformBox">
+        <span class="labelBox">Email</span><br />
+        <input type="text"  asp-for="user.userEmail"  disabled readonly name="Email" />
+    </div>
+    <br />
+    <div class="childformBox">
+        <span class="labelBox">Your Name</span><br />
+        <input type="text" asp-for="user.userName" disabled readonly name="Name" />
+    </div>
+    <br />
+    <div class="childformBox">
+        <span class="labelBox">Phone number</span><br />
+        <input type="text" asp-for="user.userPhoneNo" disabled name="Phonenum" />
+    </div>
+    <br />
+
+     <a href="ChangePassword">Change PassWord</a>
+</form>
