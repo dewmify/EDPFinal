@@ -29,10 +29,10 @@ namespace EDPFinal.Pages.SuperAdmin
                 MyAdmin = _svc.GetAdminById(id);
             }
             else
-                return RedirectToPage("AdminList");
+                return RedirectToPage("./AdminList");
             if (_svc.DeleteAdmin(MyAdmin))
             {
-                return Page();
+                return RedirectToPage("./AdminList");
             }
             else
             {
