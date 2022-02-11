@@ -50,6 +50,12 @@ namespace EDPFinal.Services
             return theAdmin;
         }
 
+        public Admin GetAdminByEmail(string email)
+        {
+            Admin theAdmin = _context.Admins.SingleOrDefault(o => o.Email == email);
+            return theAdmin;
+        }
+
         public bool UpdateAdmin(Admin theadmin)
         {
             bool updated = true;
