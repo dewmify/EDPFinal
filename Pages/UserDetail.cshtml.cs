@@ -32,5 +32,17 @@ namespace EDPFinal.Pages
         {
             return RedirectToPage("");
         }
+        public IActionResult OnPostDelAccount()
+        {
+            if (HttpContext.Session.GetString("ID") != null)
+
+            {
+                _context.DestroyUser(Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                HttpContext.Session.Remove("ID");
+                return RedirectToPage("Login");
+
+            }
+            return NotFound();
+        }
     }
 }

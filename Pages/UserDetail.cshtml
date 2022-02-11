@@ -13,7 +13,7 @@
 <form class="formBox" method="post">
     <div class="childformBox">
         <span class="labelBox">Email</span><br />
-        <input type="text"  asp-for="user.userEmail"  disabled readonly name="Email" />
+        <input type="text" asp-for="user.userEmail" disabled readonly name="Email" />
     </div>
     <br />
     <div class="childformBox">
@@ -27,5 +27,10 @@
     </div>
     <br />
 
-     <a href="ChangePassword">Change PassWord</a>
+    <a href="ChangePassword">Change Password</a>
+
+</form>
+<form method="post">
+
+    <button type="submit" formmethod="post" value="DelAccount" asp-page-handler="DelAccount">Delete Account</button>
 </form>
