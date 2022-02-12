@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EDPFinal.Models
 {
-    public class Teacher : User
+    public class Teacher : UserModel
     {
     }
 }

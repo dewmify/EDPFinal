@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDPFinal.Models
 {
-    public class User
+    public class UserModel
     {
         [Key]
         public int userID { get; set; }

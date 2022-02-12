@@ -9,7 +9,7 @@ namespace EDPFinal.Services
 {
     public class UserService
     {
-        public static List<User> userList;
+        public static List<UserModel> userList;
 
         private UserDbContext _context;
 
@@ -18,22 +18,22 @@ namespace EDPFinal.Services
             _context = context;
         }
 
-        public List<User> AllUsers { get; private set; }
+        public List<UserModel> AllUsers { get; private set; }
 
-        public List<User> GetAllUsers()
+        public List<UserModel> GetAllUsers()
         {
-            List<User> AllUser = new List<User>();
+            List<UserModel> AllUser = new List<UserModel>();
             AllUsers = _context.Users.ToList();
             return AllUsers;
         }
 
-        public User GetUserById(int id)
+        public UserModel GetUserById(int id)
         {
             var userObject = _context.Users.Where(o => o.userID == id).FirstOrDefault();
             return userObject;
         }
 
-        public bool AddUser(User userObject)
+        public bool AddUser(UserModel userObject)
         {
             if (_context.Users.Any(o => o.userID == userObject.userID)) return false;
             _context.Users.Add(userObject);
@@ -42,18 +42,18 @@ namespace EDPFinal.Services
             return true;
         }
 
-        public User GetUserByEmail(string email)
+        public UserModel GetUserByEmail(string email)
         {
             var userObject = _context.Users.SingleOrDefault(o => o.userEmail == email);
             return userObject;
         }
-        public User GetUserByPhonenum(string userPhoneNo)
+        public UserModel GetUserByPhonenum(string userPhoneNo)
         {
             var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == userPhoneNo);
             return userObject;
         }
 
-        public bool UpdateUser(User userObject)
+        public bool UpdateUser(UserModel userObject)
         {
             _context.Attach(userObject).State = EntityState.Modified;
             try

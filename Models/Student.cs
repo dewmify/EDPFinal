@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EDPFinal.Models
 {
-    public class Student : User
+    public class Student : UserModel
     {
     }
 }

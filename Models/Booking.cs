@@ -19,6 +19,6 @@ namespace EDPFinal.Models
         public int? StudentID { get; set; }
 
         public Course Course { get; set; }
-        public User User { get; set; }
+        public UserModel User { get; set; }
     }
 }
