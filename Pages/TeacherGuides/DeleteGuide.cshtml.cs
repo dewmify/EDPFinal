@@ -4,41 +4,47 @@ using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
 using EDPFinal.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.SuperAdmin
+namespace EDPFinal.Pages.TeacherGuides
 {
-    public class DeleteAdminModel : PageModel
+    public class DeleteGuideModel : PageModel
     {
-        private readonly ILogger<DeleteAdminModel> _logger;
-        private readonly AdminService _svc;
-        public DeleteAdminModel(ILogger<DeleteAdminModel> logger, AdminService service)
+        private readonly ILogger<DeleteGuideModel> _logger;
+
+        private readonly GuideService _svc;
+
+        public DeleteGuideModel(ILogger<DeleteGuideModel> logger, GuideService service)
         {
             _logger = logger;
             _svc = service;
         }
-        [BindProperty]
 
-        public Admin MyAdmin { get; set; }
+        [BindProperty]
+        public Guides MyGuide { get; set; }
+
         public IActionResult OnGet(string id)
         {
             if (id != null)
             {
-                MyAdmin = _svc.GetAdminById(id);
+                MyGuide = _svc.GetGuideById(id);
             }
             else
-                return RedirectToPage("./AdminList");
-            if (_svc.DeleteAdmin(MyAdmin))
+                return RedirectToPage("../Index");
+
+            if(_svc.DeleteGuide(MyGuide))
             {
-                return RedirectToPage("./AdminList");
+                return RedirectToPage("RetrieveGuide");
             }
             else
             {
                 return Page();
             }
+
+           
         }
-        
     }
 }

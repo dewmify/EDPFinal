@@ -1,0 +1,41 @@
+﻿@page
+@model EDPFinal.Pages.TeacherGuides.EditGuideModel
+@{
+}
+<h1>Edit Guide</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MyGuide.guideID" />
+
+
+    <div>
+        <label asp-for="MyGuide.guideID" class="col-sm-2 col-form-label">Guide ID:</label>
+        <input asp-for="MyGuide.guideID" />
+        <span asp-validation-for="MyGuide.guideID" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Guide Title:</label>
+        <input asp-for="MyGuide.guideTitle" />
+        <span asp-validation-for="MyGuide.guideTitle" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Estimated Reading Time:</label>
+        <input asp-for="MyGuide.guideETR" />
+        <span asp-validation-for="MyGuide.guideETR" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Guide Content:</label>
+        <input id="Salary" asp-for="MyGuide.guideInfo" />
+        <span asp-validation-for="MyGuide.guideInfo" class="text-danger"></span>
+    </div>
+    <div class="col-sm-10">
+        <input id="edit" type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

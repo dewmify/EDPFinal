@@ -1,0 +1,33 @@
+﻿@page
+@model EDPFinal.Pages.TeacherGuides.RetrieveGuideModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <!--This can be swtiched out for hard code text-->
+            <th>@Html.DisplayNameFor(model => model.allguides[0].guideID)</th>
+            <th>@Html.DisplayNameFor(model => model.allguides[0].guideTitle)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allguides != null)
+            {
+                @foreach (var item in Model.allguides)
+                {
+                    <tr>
+                        <td>@item.guideID</td>
+                        <td>@item.guideTitle</td>
+                        <td>
+                            <a asp-page="/TeacherGuides/GuideDetails" asp-route-id="@item.guideID">View</a>
+                            <a asp-page="/TeacherGuides/EditGuide" asp-route-id="@item.guideID">Edit</a>
+                            <a asp-page="/TeacherGuides/DeleteGuide" asp-route-id="@item.guideID" onclick="return confirm('Are you sure you want to delete this guide?');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

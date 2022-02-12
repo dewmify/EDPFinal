@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using EDPFinal.Models;
+@inject Services.UserService _userService;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor  _httpContextAccessor;
+@{
+    User user = null;
+    if (!string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString("ID")))
+
+    {
+        user = _userService.GetUserById(Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("ID")));
+    }
+
+}
+
+
+<ul class="navbar-nav ml-auto">
+    @if (user == null)
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-page="/Login">Log in</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-page="/Registration">Sign up</a>
+        </li>
+
+    }
+    else
+
+    {
+        <li class="nav-item dropdown">
+
+            <a id="navbarDropdown" class="dropdown-toggle user_name__show" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+
+                <span class="user-username">@user.userName</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <ul class="m-dropdown-menu--personal flex--between">
+                    <li class="box--bgwhite10 block__link" style="list-style:none">
+                        <a class="" style="color:#000" asp-page="UserDetail">
+
+
+                            <span>User Details</span>
+                        </a>
+                    </li>
+                    <li class="box--bgwhite10 block__link" style="list-style:none">
+                        <a class="" style="color:#000" asp-page="Login" asp-page-handler="LogOut">
+
+
+                            <span>Login Out</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+
+
+
+            </div>
+        </li>
+
+    }
+
+</ul>

@@ -13,6 +13,7 @@
         <div class="childformBox">
             <span class="labelBox">Email</span><br />
             <input type="text" asp-for="Email" placeholder="Enter your Email" name="Email"/>          
+              <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <br />
           <div class="childformBox">
@@ -23,6 +24,7 @@
         <div class="childformBox">
             <span class="labelBox">Phone number</span><br />
             <input type="text"  asp-for="Phonenum" placeholder="8 digits phone number" name="Phonenum"/>          
+              <span asp-validation-for="Phonenum" class="text-danger"></span>
         </div>
         <br />
         <div class="childformBox">

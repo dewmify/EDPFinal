@@ -1,8 +1,10 @@
 using EDPFinal.Models;
 using EDPFinal.Services;
+using EDPFinal.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EDPFinal.Pages
 {
@@ -14,17 +16,25 @@ namespace EDPFinal.Pages
         {
             _context = userService;
         }
-        [BindProperty] public string Email { get; set; }
+        [BindProperty]
+        [EmailAddress]
+        public string Email { get; set; }
         [BindProperty] public string Password { get;set;}
         [BindProperty] public string CfmPassword { get; set; }
         [BindProperty] public string Name { get; set; }
-        [BindProperty] public string Phonenum { get; set; }
+        [BindProperty]
+        [StringLength(maximumLength:8,MinimumLength =8)]
+        public string Phonenum { get; set; }
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             var newUser = new User()
             {
                 userEmail = Email,
-                userPassword = Password,
+                userPassword =Md5.GetMD5(Password),
                 userName = Name,
                 userPhoneNo = Phonenum
             };

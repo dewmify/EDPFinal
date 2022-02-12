@@ -1,0 +1,52 @@
+﻿@page
+@model EDPFinal.Pages.SearchResultsModel
+@{
+    ViewData["Title"] = "Search Results Page";
+}
+
+<h2>Search Page</h2>
+
+<form>
+    <p>
+        Course: <input type="text" name="searchString">
+        <input type="submit" value="Search"/>
+    </p>
+</form>
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].courseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].courseTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].courseGenre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].coursePrice)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Course)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseGenre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.coursePrice)
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>*@
