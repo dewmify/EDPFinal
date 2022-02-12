@@ -20,9 +20,9 @@ namespace EDPFinal.Pages.TeacherGuides
         [BindProperty]
         public Guides MyGuide { get; set; }
 
-        public IActionResult OnGet(string id)
+        public IActionResult OnGet(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
@@ -41,7 +41,7 @@ namespace EDPFinal.Pages.TeacherGuides
             }
             if (_svc.UpdateGuide(MyGuide) == true)
             {
-                return RedirectToPage("../Index");
+                return RedirectToPage("RetrieveGuide");
             }
             else
             {
