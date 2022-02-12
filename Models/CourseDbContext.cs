@@ -24,10 +24,5 @@ namespace EDPFinal.Models
         //Map entity to tablename in database
         public DbSet<Course> Course { get; set; }
 
-        /*public IQueryable<Course> SearchCourses(string courseTitle)
-        {
-            SqlParameter parameter = new SqlParameter("@courseTitle", courseTitle);
-            return this.Course.FromSql("EXECUTE @courseTitle", parameter);
-        }*/
     }
 }
