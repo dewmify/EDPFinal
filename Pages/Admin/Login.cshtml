@@ -1,5 +1,5 @@
 ﻿@page
-@model EDPFinal.Pages.AdminPages.LoginModel
+@model EDPFinal.Pages.Admin.LoginModel
 @{
 }
 
@@ -10,15 +10,15 @@
         </div>
         <div class="usernameBox">
             <span class="labelBox">Email/Phone number</span><br />
-            <input type="text" asp-for="Email" name="Email" class="Email" />
+            <input type="text" asp-for="Admin.Email" name="Email" class="Email" />
         </div>
         <br />
         <div class="passwordBox">
             <span class="labelBox">Password</span><br />
-            <input type="password" asp-for="Password" name="Password" class="Password" />
+            <input type="password" asp-for="Admin.Password" name="Password" class="Password" />
         </div>
         <br />
-        <button a href="Homepage" type="submit">Log in</button>
+        <button a href="../Index" type="submit">Log in</button>
         <br />
         
     </form>

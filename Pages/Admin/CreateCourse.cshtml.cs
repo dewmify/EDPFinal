@@ -7,7 +7,7 @@ using EDPFinal.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
     public class CreateCourseModel : PageModel
     {

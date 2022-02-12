@@ -8,23 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
-    public class CourseListModel : PageModel
+    public class UserListModel : PageModel
     {
         [BindProperty]
-        public List<Course> AllCourses { get; set; }
-        private readonly ILogger<CourseListModel> _logger;
-        private CourseService _svc;
+        public List<User> AllUsers { get; set; }
+        private readonly ILogger<UserListModel> _logger;
+        private UserService _svc;
 
-        public CourseListModel(ILogger<CourseListModel> logger, CourseService service)
+        public UserListModel(ILogger<UserListModel> logger, UserService service)
         {
             _logger = logger;
             _svc = service;
         }
         public void OnGet()
         {
-            AllCourses = _svc.GetAllCourses();
+            AllUsers = _svc.GetAllUsers();
         }
     }
 }

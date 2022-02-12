@@ -19,6 +19,6 @@ namespace EDPFinal.Models
             string connectionString = _config.GetConnectionString("MyConn");
             optionsBuilder.UseSqlServer(connectionString);
         }
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<AdminModel> Admins { get; set; }
     }
 }

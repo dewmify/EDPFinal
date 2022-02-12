@@ -8,45 +8,39 @@ using EDPFinal.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
     public class LoginModel : PageModel
     {
-        private readonly AdminService _context;
-
-        public LoginModel(AdminService userService)
-        {
-            _context = userService;
-        }
-
-        [BindProperty] 
-        public string Email { get; set; }
+        private readonly ILogger<LoginModel> _logger;
+        private AdminService _svc;
 
         [BindProperty]
-        public string Password { get; set; }
-        
-        [BindProperty] 
-        public string Name { get; set; }
-        
-        [BindProperty] 
-        public string Phonenum { get; set; }
+        public AdminModel Admin { get; set; }
+        public LoginModel(ILogger<LoginModel> logger, AdminService service)
+        {
+            _logger = logger;
+            _svc = service;
+        }
+
 
         public string errormessage { get; set; }
         public IActionResult OnPost()
         {
 
-            Admin admin = _context.GetAdminByEmail(Email);
-            if (admin == null || admin.Password != Md5.GetMD5(Password))
+            Admin = _svc.GetAdminByEmail(Admin.Email);
+            if (Admin == null || Admin.Password != Md5.GetMD5(Admin.Password))
             {
                 errormessage = "Incorrect login details";
                 return Page();
             }
             else
             {
-                HttpContext.Session.SetString("role", "admin");
-                HttpContext.Session.SetString("Email", admin.Email.ToString());
-                return RedirectToPage("/Homepage");
+                HttpContext.Session.SetString("userType", "admin");
+                HttpContext.Session.SetString("Email", Admin.Email.ToString());
+                return RedirectToPage("../Index");
             }
 
             

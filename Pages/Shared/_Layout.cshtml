@@ -19,7 +19,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul nav="id" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        @if (Context.Session.GetInt32("ID") != null)
+                        @if (Context.Session.GetInt32("ID") == null)
                         {
                             <div class="navbar-collapse">
                                 <partial name="_LoginPartial" />
@@ -58,7 +58,25 @@
                                 <partial name="_LoginPartial" />
                             </div>
                         }
-                        <li class="nav-item">
+                        else if (Context.Session.GetString("userType") == "admin")
+                        { 
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Admin/ApproveTeacher">List of Unapproved Teachers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Admin/ApproveCourse">List of Unapproved Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/TeacherGuides/CreateGuide">Create Guides</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Admin/CourseList">List of Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Admin/UserList">List of Users</a>
+                            </li>
+                        }
+                        @*<li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/SuperAdmin/CreateAdmin">Create Admin</a>
                         </li>
                         <li class="nav-item">
@@ -66,7 +84,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/TeacherGuides/CreateGuide">Create Guides</a>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
             </div>

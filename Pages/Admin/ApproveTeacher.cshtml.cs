@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
     public class ApproveTeacherModel : PageModel
     {

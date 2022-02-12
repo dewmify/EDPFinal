@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDPFinal.Models
 {
-    public class Admin
+    public class AdminModel
     {
         [Required, MinLength(3, ErrorMessage="Enter only 4 characters"), MaxLength(5)]
         public string ID {get; set;}

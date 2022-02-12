@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
     public class ApprovedCourseConfirmedModel : PageModel
     {

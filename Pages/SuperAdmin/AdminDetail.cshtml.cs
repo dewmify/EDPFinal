@@ -13,7 +13,7 @@ namespace EDPFinal.Pages.SuperAdmin
     public class AdminDetailModel : PageModel
     {
         [BindProperty]
-        public Admin MyAdmin { get; set; }
+        public AdminModel MyAdmin { get; set; }
         private readonly ILogger<AdminDetailModel> _logger;
         private AdminService _svc;
         public AdminDetailModel(ILogger<AdminDetailModel> logger, AdminService service)

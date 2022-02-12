@@ -11,7 +11,7 @@ namespace EDPFinal.Services
     {
         public static List<User> userList;
 
-        private readonly UserDbContext _context;
+        private UserDbContext _context;
 
         public UserService(UserDbContext context)
         {

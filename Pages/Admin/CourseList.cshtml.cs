@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace EDPFinal.Pages.AdminPages
+namespace EDPFinal.Pages.Admin
 {
-    public class ApproveCourseModel : PageModel
+    public class CourseListModel : PageModel
     {
         [BindProperty]
         public List<Course> AllCourses { get; set; }
-        private readonly ILogger<ApproveCourseModel> _logger;
+        private readonly ILogger<CourseListModel> _logger;
         private CourseService _svc;
 
-        public ApproveCourseModel(ILogger<ApproveCourseModel> logger, CourseService service)
+        public CourseListModel(ILogger<CourseListModel> logger, CourseService service)
         {
             _logger = logger;
             _svc = service;

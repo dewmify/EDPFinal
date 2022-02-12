@@ -13,7 +13,7 @@ namespace EDPFinal.Pages.SuperAdmin
     public class AdminListModel : PageModel
     {
         [BindProperty]
-        public List<Admin> alladmins { get; set; }
+        public List<AdminModel> alladmins { get; set; }
 
         private readonly ILogger<AdminListModel> _logger;
         private AdminService _svc;

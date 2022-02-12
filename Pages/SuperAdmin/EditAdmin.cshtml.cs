@@ -20,7 +20,7 @@ namespace EDPFinal.Pages.SuperAdmin
             _svc = service;
         }
         [BindProperty]
-        public Admin MyAdmin { get; set; }
+        public AdminModel MyAdmin { get; set; }
 
         public IActionResult OnGet(string id)
         {

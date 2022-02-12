@@ -22,9 +22,9 @@ namespace EDPFinal.Services
             
          };*/
 
-        public List<Admin> GetAllAdmins()
+        public List<AdminModel> GetAllAdmins()
         {
-            List<Admin> AllAdmins = new List<Admin>();
+            List<AdminModel> AllAdmins = new List<AdminModel>();
             AllAdmins = _context.Admins.ToList();
             return AllAdmins;
         }
@@ -34,7 +34,7 @@ namespace EDPFinal.Services
             return _context.Admins.Any(e => e.ID == id);
         }
 
-        public bool AddAdmin(Admin newadmin)
+        public bool AddAdmin(AdminModel newadmin)
         {
             if(AdminExists(newadmin.ID))
             {
@@ -44,19 +44,19 @@ namespace EDPFinal.Services
             _context.SaveChanges();
             return true;
         }
-        public Admin GetAdminById(String id)
+        public AdminModel GetAdminById(String id)
         {
-            Admin theAdmin = _context.Admins.Where(e => e.ID == id).FirstOrDefault();
+            AdminModel theAdmin = _context.Admins.Where(e => e.ID == id).FirstOrDefault();
             return theAdmin;
         }
 
-        public Admin GetAdminByEmail(string email)
+        public AdminModel GetAdminByEmail(string email)
         {
-            Admin theAdmin = _context.Admins.SingleOrDefault(o => o.Email == email);
+            AdminModel theAdmin = _context.Admins.SingleOrDefault(o => o.Email == email);
             return theAdmin;
         }
 
-        public bool UpdateAdmin(Admin theadmin)
+        public bool UpdateAdmin(AdminModel theadmin)
         {
             bool updated = true;
             _context.Attach(theadmin).State = EntityState.Modified;
@@ -80,7 +80,7 @@ namespace EDPFinal.Services
             return updated;
         }
 
-        public bool DeleteAdmin(Admin theadmin)
+        public bool DeleteAdmin(AdminModel theadmin)
         {
             bool deleted = true;
             try

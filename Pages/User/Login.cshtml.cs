@@ -36,8 +36,9 @@ namespace EDPFinal.Pages
                 return Page();
             }
 
-            HttpContext.Session.SetString("ID", user.userID.ToString());
-            return RedirectToPage("/Homepage");
+            HttpContext.Session.SetInt32("ID", user.userID);
+            HttpContext.Session.SetString("userType", user.userType.ToString());
+            return RedirectToPage("../Index");
         }
         public IActionResult OnGetLogOut()
         {
