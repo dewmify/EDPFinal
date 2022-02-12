@@ -10,12 +10,12 @@
         </div>
         <div class="usernameBox">
             <span class="labelBox">Email/Phone number</span><br />
-            <input type="text" asp-for="Admin.adminEmail" name="Email" class="Email" />
+            <input type="text" asp-for="@Model.Email" name="Email" class="Email" />
         </div>
         <br />
         <div class="passwordBox">
             <span class="labelBox">Password</span><br />
-            <input type="password" asp-for="Admin.adminPassword" name="Password" class="Password" />
+            <input type="password" asp-for="@Model.Password" name="Password" class="Password" />
         </div>
         <br />
         <div>

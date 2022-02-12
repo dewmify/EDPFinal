@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
+using EDPFinal.Services;
+using EDPFinal.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,14 +13,20 @@ namespace EDPFinal.Pages.SuperAdmin
 {
     public class CreateAdminModel : PageModel
     {
-        private readonly Services.AdminService _svc;
-        public CreateAdminModel(Services.AdminService service)
+        [BindProperty]
+        public AdminModel MyAdmin { get; set; }
+        private readonly AdminService _svc;
+
+        [BindProperty]
+        public string Password { get; set; }
+
+        [BindProperty]
+        public string Email { get; set; }
+        public CreateAdminModel(AdminService service)
         {
             _svc = service;
         }
-        [BindProperty]
-        public AdminModel MyAdmin { get; set; }
-        public string MyMessage { get; set; }
+        
         public void OnGet()
         {
 
@@ -27,15 +35,11 @@ namespace EDPFinal.Pages.SuperAdmin
         {
             if (ModelState.IsValid)
             {
-                if(_svc.AddAdmin(MyAdmin))
+                MyAdmin.setPassword(Password);
+                MyAdmin.adminEmail = Email;
+                if (_svc.AddAdmin(MyAdmin))
                 {
-                     HttpContext.Session.SetString("SSEmail", MyAdmin.adminEmail);
-                     return RedirectToPage("AdminConfirm");
-                }
-                else
-                {
-                    MyMessage = "Admin ID Already Exists!";
-                    return Page();
+                    return RedirectToPage("./AdminConfirm");
                 }
             }
             return Page();

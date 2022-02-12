@@ -29,7 +29,7 @@ namespace EDPFinal.Services
             return AllAdmins;
         }
 
-        private bool AdminExists(string id)
+        private bool AdminExists(int id)
         {
             return _context.Admins.Any(e => e.adminID == id);
         }
@@ -44,7 +44,7 @@ namespace EDPFinal.Services
             _context.SaveChanges();
             return true;
         }
-        public AdminModel GetAdminById(String id)
+        public AdminModel GetAdminById(int id)
         {
             AdminModel theAdmin = _context.Admins.Where(e => e.adminID == id).FirstOrDefault();
             return theAdmin;
