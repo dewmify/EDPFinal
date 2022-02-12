@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{searchString?}"
 @model EDPFinal.Pages.SearchResultsModel
 @{
     ViewData["Title"] = "Search Results Page";
@@ -8,12 +8,15 @@
 
 <form>
     <p>
-        Course: <input type="text" name="searchString">
+        <select asp-for="courseGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
+        Course: <input type="text" asp-for="searchString">
         <input type="submit" value="Search"/>
     </p>
 </form>
 
-@*<table class="table">
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -49,4 +52,4 @@
                 </tr>
             }
     </tbody>
-</table>*@
+</table>
