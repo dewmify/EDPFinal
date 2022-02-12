@@ -13,7 +13,7 @@ namespace EDPFinal.Pages.Admin
     public class UserListModel : PageModel
     {
         [BindProperty]
-        public List<User> AllUsers { get; set; }
+        public List<UserModel> AllUsers { get; set; }
         private readonly ILogger<UserListModel> _logger;
         private UserService _svc;
 

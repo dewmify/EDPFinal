@@ -31,7 +31,7 @@ namespace EDPFinal.Pages
             {
                 return Page();
             }
-            var newUser = new User()
+            var newUser = new UserModel()
             {
                 userEmail = Email,
                 userPassword =Md5.GetMD5(Password),

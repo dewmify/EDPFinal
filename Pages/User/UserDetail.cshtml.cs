@@ -12,17 +12,17 @@ namespace EDPFinal.Pages
         private readonly UserService _context;
 
         [BindProperty]
-        public User user { get; set; }
+        public UserModel user { get; set; }
         public UserDetailModel(UserService userService)
         {
             _context = userService;
         }
         public void OnGet()
         {
-            if (HttpContext.Session.GetString("ID")!=null)
+            if (HttpContext.Session.GetInt32("ID")!=null)
 
             {
-                 user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                 user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
 
 
             }
@@ -34,10 +34,10 @@ namespace EDPFinal.Pages
         }
         public IActionResult OnPostDelAccount()
         {
-            if (HttpContext.Session.GetString("ID") != null)
+            if (HttpContext.Session.GetInt32("ID") != null)
 
             {
-                _context.DestroyUser(Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                _context.DestroyUser(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
                 HttpContext.Session.Remove("ID");
                 return RedirectToPage("Login");
 

@@ -3,11 +3,11 @@
 @inject Services.UserService _userService;
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor  _httpContextAccessor;
 @{
-    User user = null;
-    if (!string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString("ID")))
+    UserModel user = null;
+    if (_httpContextAccessor.HttpContext.Session.GetInt32("ID") != null)
 
     {
-        user = _userService.GetUserById(Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("ID")));
+        user = _userService.GetUserById(Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetInt32("ID")));
     }
 
 }
@@ -38,17 +38,17 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <ul class="m-dropdown-menu--personal flex--between">
                     <li class="box--bgwhite10 block__link" style="list-style:none">
-                        <a class="" style="color:#000" asp-page="UserDetail">
+                        <a class="" style="color:#000" asp-page="User/UserDetail">
 
 
                             <span>User Details</span>
                         </a>
                     </li>
                     <li class="box--bgwhite10 block__link" style="list-style:none">
-                        <a class="" style="color:#000" asp-page="Login" asp-page-handler="LogOut">
+                        <a class="" style="color:#000" asp-page="Index" asp-page-handler="LogOut">
 
 
-                            <span>Login Out</span>
+                            <span>Log Out</span>
                         </a>
                     </li>
                 </ul>

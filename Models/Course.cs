@@ -38,6 +38,6 @@ namespace EDPFinal.Models
         [Required]
         public bool approvalStatus { get; set; }
 
-        public User User { get; set; }
+        public UserModel User { get; set; }
     }
 }

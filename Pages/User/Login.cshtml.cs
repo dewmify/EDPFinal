@@ -29,7 +29,7 @@ namespace EDPFinal.Pages
         public IActionResult OnPost()
         {
 
-            User user = _context.GetUserByEmail(Email);
+            UserModel user = _context.GetUserByEmail(Email);
             if (user == null || user.userPassword != Md5.GetMD5( Password))
             {
                errormessage = "Email or Password is incorrect!";

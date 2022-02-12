@@ -13,7 +13,7 @@ namespace EDPFinal.Pages.Admin
     public class ApproveTeacherModel : PageModel
     {
         [BindProperty]
-        public List<User> AllUsers { get; set; }
+        public List<UserModel> AllUsers { get; set; }
         private readonly ILogger<ApproveTeacherModel> _logger;
         private UserService _svc;
 
