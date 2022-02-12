@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.AspNetCore.Http
 @model EDPFinal.Pages.Teacher.CourseListModel
 @{
     ViewData["Title"] = "Course List";
@@ -16,7 +17,7 @@
     <tbody>
         @{ if (Model.AllCourses != null)
             {
-                @foreach (var cor in Model.AllCourses)
+                @foreach (var cor in Model.AllCourses.Where(i => i.userID == HttpContext.Session.GetInt32("ID")))
                 {
                     <tr>
                         <td>@cor.courseTitle</td>
@@ -24,21 +25,22 @@
                         @{ if (cor.courseFormat == false)
                             {
                                 <td>Video</td>
-                                }
+                            }
                             else if (cor.courseFormat == true)
                             {
                                 <td>Live</td>
-                                }
                             }
-                    <td>
-                        <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
-                        <a asp-page="/Teacher/UpdateCourse" asp-route-id="@cor.courseID">Update</a>
-                        <a asp-page="/Teacher/DeleteCourse" asp-route-id="@cor.courseID" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
-                        <a asp-page="/Teacher/VidTest" asp-route-id="@cor.courseID">Video</a>
-                    </td>
+                        }
+                        <td>
+                            <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
+                            <a asp-page="/Teacher/UpdateCourse" asp-route-id="@cor.courseID">Update</a>
+                            <a asp-page="/Teacher/DeleteCourse" asp-route-id="@cor.courseID" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                            <a asp-page="/Teacher/VidTest" asp-route-id="@cor.courseID">Video</a>
+                        </td>
                     </tr>
                 }
             }
+        }
         }
     </tbody>
 </table>

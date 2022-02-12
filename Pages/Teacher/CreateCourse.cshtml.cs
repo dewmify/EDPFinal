@@ -21,15 +21,19 @@ namespace EDPFinal.Pages.Teacher
             _svc = service;
         }
         //Check session if valid (teacher access only)
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("userType") != "True")
+            {
+                return RedirectToPage("../Index");
+            }
+            return Page();
         }
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
                 //get Session of teacher id
-                HttpContext.Session.SetInt32("userID", 1);
                 MyCourses.userID = (int)HttpContext.Session.GetInt32("userID");
                 var url = MyCourses.courseVideo;
                 var uri = new Uri(url);

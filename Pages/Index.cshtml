@@ -92,7 +92,18 @@
             <h4 class="card-title">@item.courseTitle</h4>
             <p class="card-text"><strong>Course Information</strong> @item.courseInfo</p>
             <p class="card-text"><strong>Genre:</strong> @item.courseGenre</p>
-            <p class="card-text"><strong>Format:</strong> @item.courseFormat</p>
+            <p class="card-text">
+                <strong>Format:</strong>
+                @{ if (item.courseFormat == false)
+                    {
+                        <label>Video</label>
+                    }
+                    else if (item.courseFormat == true)
+                    {
+            <label>Live</label>
+                    }
+                }
+            </p>
             <p class="card-text"><strong>Price:$</strong> @item.coursePrice</p>
         </div>
         <div class="card-footer" style="background: inherit; border-color: inherit;">
