@@ -2,7 +2,11 @@
 @model EDPFinal.Pages.CourseBookings.CreateBookingModel
 @{
 }
-
+<style>
+    #btnbook{
+        text-align:right;
+    }
+</style>
 <h1>This is the create booking page</h1>
 
 <h1>Book for @Model.coursedetails.courseTitle</h1>
@@ -31,7 +35,7 @@
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Format:</label>
-        <input readonly class="form-control" value="@Model.coursedetails.courseFormat" />
+        <input readonly class="form-control" value="@Model.genreValue" />
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Price:</label>
@@ -40,6 +44,9 @@
     <div>
         <label class="col-sm-2 col-form-label">Details:</label>
         <input readonly class="form-control" value="@Model.coursedetails.courseInfo" />
+    </div>
+    <div id="btnbook" class="card-footer" style="background: inherit; border-color: inherit;">
+        <a asp-page="/Index" class="btn btn-outline-primary">Book</a>
     </div>
 
 </form>

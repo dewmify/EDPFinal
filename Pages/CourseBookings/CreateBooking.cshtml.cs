@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
 using EDPFinal.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ namespace EDPFinal.Pages.CourseBookings
         private CourseService _coursesvc;
 
 
+
         public CreateBookingModel(ILogger<CreateBookingModel> logger, BookingService service, CourseService service1)
         {
             _logger = logger;
@@ -31,15 +33,35 @@ namespace EDPFinal.Pages.CourseBookings
         [BindProperty]
         public Course coursedetails { get; set; }
 
+        public string genreValue;
+        
         public void OnGet(int Id)
         {
             coursedetails = _coursesvc.GetCourse(Id);
+            if (coursedetails.courseFormat)
+            {
+                genreValue = "Live";
+            }
+            else if(coursedetails.courseFormat == false)
+            {
+                genreValue = "Video";
+            }
 
         }
-
+        
         public IActionResult OnPost()
         {
-            coursedetails = _coursesvc.GetCourse(MyBooking.CourseID);
+            if (ModelState.IsValid)
+            {
+                
+                MyBooking.CourseID = coursedetails.courseID;
+                MyBooking.StudentID = (int)HttpContext.Session.GetInt32("ID"); 
+
+                if (_svc.AddBooking(MyBooking))
+                {
+                    return RedirectToPage("/TeacherGuides/GuideConfirm");
+                }
+            }
             return Page();
         }
     }
