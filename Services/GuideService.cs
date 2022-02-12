@@ -22,7 +22,7 @@ namespace EDPFinal.Services
             AllGuides = _context.Guides.ToList();
             return AllGuides;
         }
-        private bool GuideExists(string id)
+        private bool GuideExists(int id)
         {
             return _context.Guides.Any(e => e.guideID == id);
         }
@@ -83,10 +83,12 @@ namespace EDPFinal.Services
             return deleted;
 
         }
-        public Guides GetGuideById(String id)
+        public Guides GetGuideById(int id)
         {
-            Guides theGuide = _context.Guides.Where(e => e.guideID == id).FirstOrDefault();
-            return theGuide;
+            var cor = _context.Guides.SingleOrDefault(o => o.guideID == id);
+            return cor;
+            //Guides theGuide = _context.Guides.Where(e => e.guideID == id).FirstOrDefault();
+            //return theGuide;
         }
     }
 }

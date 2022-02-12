@@ -26,9 +26,9 @@ namespace EDPFinal.Pages.TeacherGuides
         [BindProperty]
         public Guides MyGuide { get; set; }
 
-        public IActionResult OnGet(string id)
+        public IActionResult OnGet(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 MyGuide = _svc.GetGuideById(id);
             }
