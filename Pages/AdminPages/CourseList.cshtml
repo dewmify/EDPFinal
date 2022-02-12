@@ -1,0 +1,41 @@
+﻿@page
+@model EDPFinal.Pages.AdminPages.CourseListModel
+@{
+    ViewData["Title"] = "Course List - Admin";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Format</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.AllCourses != null)
+            {
+                @foreach (var cor in Model.AllCourses)
+                {
+                    <tr>
+                        <td>@cor.courseTitle</td>
+                        <td>@cor.courseGenre</td>
+                        @{ if (cor.courseFormat == false)
+                            {
+                                <td>Video</td>
+                            }
+                            else if (cor.courseFormat == true)
+                            {
+                                <td>Live</td>
+                            }
+                        }
+                        <td>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

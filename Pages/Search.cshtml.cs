@@ -13,6 +13,10 @@ namespace EDPFinal.Pages
 {
     public class SearchResultsModel : PageModel
     {
+        public void OnGet()
+        {
+        }
+
         private readonly CourseDbContext _context;
 
         public SearchResultsModel(CourseDbContext context)
@@ -28,6 +32,8 @@ namespace EDPFinal.Pages
         
         [BindProperty(SupportsGet = true)]
         public string courseGenre { get; set; }
+        
+
 
         public async Task OnGetAsync()
         {
@@ -50,8 +56,6 @@ namespace EDPFinal.Pages
             Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
             Course = await courses.ToListAsync();
         }
-        public void OnGet()
-        {
-        }
+        
     }
 }

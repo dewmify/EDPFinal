@@ -1,0 +1,45 @@
+﻿@page
+@model EDPFinal.Pages.AdminPages.ApproveTeacherModel
+@{
+    ViewData["Title"] = "Approve Teachers - Admin";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Email</th>
+            <th>Username</th>
+            <th>User Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.AllUsers != null)
+            {
+                @foreach (var u in Model.AllUsers)
+                {
+                    @if(u.userType == true && u.registrationStatus == false)
+                    {
+                        <tr>
+                            <td>@u.userID</td>
+                            <td>@u.userEmail</td>
+                            <td>@u.userName</td>
+                            @{ if (u.userType == false)
+                                {
+                                    <td>Non-Teacher</td>
+                                }
+                                else if (u.userType == true)
+                                {
+                                    <td>Teacher</td>
+                                }
+                            }
+                            <td>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        }
+    </tbody>
+</table>
+

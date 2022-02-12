@@ -10,9 +10,9 @@ namespace EDPFinal.Models
     public class Guides
     {
        [Key]
-        public string guideID { get; set; }
+        public int guideID { get; set; }
 
-        
+     
         public string guideInfo { get; set; }
         public string guideTitle { get; set; }
         public string guideETR { get; set; }
