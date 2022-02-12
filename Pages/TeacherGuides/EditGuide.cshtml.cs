@@ -22,6 +22,10 @@ namespace EDPFinal.Pages.TeacherGuides
 
         public IActionResult OnGet(int id)
         {
+            if (HttpContext.Session.GetString("userType") != "admin")
+            {
+                return RedirectToPage("../Index");
+            }
             if (id == 0)
             {
                 return NotFound();

@@ -19,8 +19,6 @@ namespace EDPFinal.Pages.CourseBookings
         private BookingService _svc;
         private CourseService _coursesvc;
 
-
-
         public CreateBookingModel(ILogger<CreateBookingModel> logger, BookingService service, CourseService service1)
         {
             _logger = logger;
@@ -33,19 +31,17 @@ namespace EDPFinal.Pages.CourseBookings
         [BindProperty]
         public Course coursedetails { get; set; }
 
+        public string titleValue;
         public string genreValue;
-        
-        public void OnGet(int Id)
+        public string formatValue;
+        public string priceValue;
+        public string infoValue;
+
+        public IActionResult OnGet(int Id)
         {
             coursedetails = _coursesvc.GetCourse(Id);
-            if (coursedetails.courseFormat)
-            {
-                genreValue = "Live";
-            }
-            else if(coursedetails.courseFormat == false)
-            {
-                genreValue = "Video";
-            }
+            HttpContext.Session.SetInt32("CourseID", coursedetails.courseID);
+            return Page();
 
         }
         
@@ -53,13 +49,12 @@ namespace EDPFinal.Pages.CourseBookings
         {
             if (ModelState.IsValid)
             {
-                
-                MyBooking.CourseID = coursedetails.courseID;
-                MyBooking.StudentID = (int)HttpContext.Session.GetInt32("ID"); 
+                MyBooking.CourseID = (int)HttpContext.Session.GetInt32("CourseID");
+                MyBooking.StudentID = (int)HttpContext.Session.GetInt32("ID");
 
                 if (_svc.AddBooking(MyBooking))
                 {
-                    return RedirectToPage("/TeacherGuides/GuideConfirm");
+                    return RedirectToPage("../TeacherGuides/GuideConfirm");
                 }
             }
             return Page();

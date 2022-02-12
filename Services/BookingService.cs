@@ -18,7 +18,7 @@ namespace EDPFinal.Services
         public List<Booking> GetAllBookings()
         {
             List<Booking> AllBookings = new List<Booking>();
-            AllBookings = _context.Bookings.ToList();
+            AllBookings = _context.Booking.ToList();
             return AllBookings;
         }
 
@@ -36,12 +36,12 @@ namespace EDPFinal.Services
 
         private bool BookingExists(int id)
         {
-            return _context.Bookings.Any(e => e.BookingID == id);
+            return _context.Booking.Any(e => e.BookingID == id);
         }
 
         public Booking GetBookingById(int id)
         {
-            var cor = _context.Bookings.SingleOrDefault(o => o.BookingID == id);
+            var cor = _context.Booking.SingleOrDefault(o => o.BookingID == id);
             return cor;
         }
 

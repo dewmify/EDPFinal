@@ -16,10 +16,8 @@
     <tbody>
         @{ if (Model.AllCourses != null)
             {
-                @foreach (var cor in Model.AllCourses)
+                @foreach (var cor in Model.AllCourses.Where(i => i.approvalStatus == false))
                 {
-                    @if (cor.approvalStatus == false)
-                    {
                         <tr>
                             <td>@cor.courseTitle</td>
                             <td>@cor.courseGenre</td>

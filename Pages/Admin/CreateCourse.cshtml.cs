@@ -21,11 +21,19 @@ namespace EDPFinal.Pages.Admin
             _svc = service;
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnGet()
+        {
+            if (HttpContext.Session.GetString("userType") != "admin")
+            {
+                return RedirectToPage("../Index");
+            }
+            return Page();
+        }
+
+            public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                //get Session of teacher id
                 MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
                 var url = MyCourses.courseVideo;
                 var uri = new Uri(url);
@@ -46,10 +54,6 @@ namespace EDPFinal.Pages.Admin
 
             }
             return Page();
-        }
-
-        public void OnGet()
-        {
         }
     }
 }

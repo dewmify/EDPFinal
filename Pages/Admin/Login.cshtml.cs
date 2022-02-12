@@ -43,6 +43,7 @@ namespace EDPFinal.Pages.Admin
             {
                 HttpContext.Session.SetString("userType", "admin");
                 HttpContext.Session.SetString("Email", MyAdmin.adminEmail.ToString());
+                HttpContext.Session.SetInt32("ID", MyAdmin.adminID);
                 return RedirectToPage("../Index");
             }
             else
