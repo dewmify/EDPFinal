@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,7 +19,45 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul nav="id" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-
+                        @if (Context.Session.GetInt32("ID") != null)
+                        {
+                            <div class="navbar-collapse">
+                                <partial name="_LoginPartial" />
+                            </div>
+                        }
+                        else if (Context.Session.GetString("userType") == "False")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Index">Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Search">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/TeacherGuides/RetrieveGuide">Teacher's Guides'</a>
+                            </li>
+                            <div class="navbar-collapse">
+                                <partial name="_LoginPartial" />
+                            </div>
+                        }
+                        else if (Context.Session.GetString("userType") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Index">Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Search">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/TeacherGuides/RetrieveGuide">Teacher's Guides'</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Teacher/CreateCourse">Create Courses</a>
+                            </li>
+                            <div class="navbar-collapse">
+                                <partial name="_LoginPartial" />
+                            </div>
+                        }
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/SuperAdmin/CreateAdmin">Create Admin</a>
                         </li>
@@ -26,15 +65,9 @@
                             <a class="nav-link" asp-area="" asp-page="/SuperAdmin/AdminList">List of Admins</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/TeacherGuides/RetrieveGuide">Teacher's Guides'</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/TeacherGuides/CreateGuide">Create Guides</a>
                         </li>
                     </ul>
-                    <div class="navbar-collapse">
-                        <partial name="_LoginPartial" />
-                    </div>
                 </div>
             </div>
         </nav>
