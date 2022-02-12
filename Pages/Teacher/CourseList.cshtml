@@ -33,7 +33,7 @@
                     <td>
                         <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
                         <a asp-page="/Teacher/UpdateCourse" asp-route-id="@cor.courseID">Update</a>
-                        <a asp-page="/Teacher/DeleteCourse" asp-route-id="@cor.courseID">Delete</a>
+                        <a asp-page="/Teacher/DeleteCourse" asp-route-id="@cor.courseID" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                     </td>
                     </tr>
                 }
