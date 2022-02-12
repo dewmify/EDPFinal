@@ -29,7 +29,7 @@ namespace EDPFinal.Pages.SuperAdmin
             {
                 if(_svc.AddAdmin(MyAdmin))
                 {
-                     HttpContext.Session.SetString("SSEmail", MyAdmin.Email);
+                     HttpContext.Session.SetString("SSEmail", MyAdmin.adminEmail);
                      return RedirectToPage("AdminConfirm");
                 }
                 else

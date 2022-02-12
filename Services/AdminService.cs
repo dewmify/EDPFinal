@@ -31,12 +31,12 @@ namespace EDPFinal.Services
 
         private bool AdminExists(string id)
         {
-            return _context.Admins.Any(e => e.ID == id);
+            return _context.Admins.Any(e => e.adminID == id);
         }
 
         public bool AddAdmin(AdminModel newadmin)
         {
-            if(AdminExists(newadmin.ID))
+            if(AdminExists(newadmin.adminID))
             {
                 return false;
             }
@@ -46,13 +46,13 @@ namespace EDPFinal.Services
         }
         public AdminModel GetAdminById(String id)
         {
-            AdminModel theAdmin = _context.Admins.Where(e => e.ID == id).FirstOrDefault();
+            AdminModel theAdmin = _context.Admins.Where(e => e.adminID == id).FirstOrDefault();
             return theAdmin;
         }
 
         public AdminModel GetAdminByEmail(string email)
         {
-            AdminModel theAdmin = _context.Admins.SingleOrDefault(o => o.Email == email);
+            AdminModel theAdmin = _context.Admins.SingleOrDefault(o => o.adminEmail == email);
             return theAdmin;
         }
 
@@ -68,7 +68,7 @@ namespace EDPFinal.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if(!AdminExists(theadmin.ID))
+                if(!AdminExists(theadmin.adminID))
                 {
                     updated = false;
                 }
@@ -90,7 +90,7 @@ namespace EDPFinal.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AdminExists(theadmin.ID))
+                if (!AdminExists(theadmin.adminID))
                 {
                     deleted = false;
                 }

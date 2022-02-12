@@ -7,8 +7,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.alladmins[0].ID)</th>
-            <th>@Html.DisplayNameFor(model => model.alladmins[0].Email)</th>
+            <th>@Html.DisplayNameFor(model => model.alladmins[0].adminID)</th>
+            <th>@Html.DisplayNameFor(model => model.alladmins[0].adminEmail)</th>
             <th></th>
         </tr>
     </thead>
@@ -18,16 +18,16 @@
                 @foreach (var item in Model.alladmins)
                 {
                     <tr>
-                        <td>@item.ID</td>
-                        <td>@item.Email</td>
+                        <td>@item.adminID</td>
+                        <td>@item.adminEmail</td>
                         <td>
-                            <a asp-page="/SuperAdmin/EditAdmin" asp-route-id="@item.ID">Edit</a>
+                            <a asp-page="/SuperAdmin/EditAdmin" asp-route-id="@item.adminID">Edit</a>
                         </td>
                         <td>
-                            <a asp-route-id="@item.ID" onclick="return confirm('Are you sure you want to delete?')" asp-page="/SuperAdmin/DeleteAdmin">Delete</a>
+                            <a asp-route-id="@item.adminID" onclick="return confirm('Are you sure you want to delete?')" asp-page="/SuperAdmin/DeleteAdmin">Delete</a>
                         </td>
                         <td>
-                            <a asp-page="/SuperAdmin/AdminDetail" asp-route-id="@item.ID">View</a>
+                            <a asp-page="/SuperAdmin/AdminDetail" asp-route-id="@item.adminID">View</a>
                         </td>
                     </tr>
                 }
