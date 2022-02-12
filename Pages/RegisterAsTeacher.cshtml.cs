@@ -8,5 +8,10 @@ namespace EDPFinal.Pages
         public void OnGet()
         {
         }
+
+        //public IActionResult OnPostUploadPdf()
+        //{
+            
+        //}
     }
 }
