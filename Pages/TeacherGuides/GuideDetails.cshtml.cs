@@ -22,9 +22,9 @@ namespace EDPFinal.Pages.TeacherGuides
             _svc = service;
 
         }
-        public void OnGet(string id)
+        public void OnGet(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 MyGuide = _svc.GetGuideById(id);
             }
