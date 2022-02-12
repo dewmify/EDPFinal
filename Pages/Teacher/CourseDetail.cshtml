@@ -3,29 +3,56 @@
 @{
     ViewData["Title"] = "Course Details";
 }
+<style>
+    .container{
+        color: #666666;
+        border-radius : 25px;
+        padding: 10px;
+    }
 
-<form method="post">
-    <div>
-        <label class="col-sm--2 col-form-label">Course Title:</label>
-        <label>@Model.MyCourse.courseTitle</label>
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Course Genre:</label>
-        <label>@Model.MyCourse.courseGenre</label>
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Course Format:</label>
-        @{ if (Model.MyCourse.courseFormat == false)
-            {
-                <label>Video</label>
-                }else if(Model.MyCourse.courseFormat == true)
-            {
-                <label>Live</label>
-            }
-            }
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Course Details:</label>
-        <label>@Model.MyCourse.courseInfo</label>
-    </div>
-</form>
+    #Vid{
+        border-radius:25px;
+    }
+
+
+</style>
+<body>
+    <h1>Book for @Model.MyCourse.courseTitle</h1>
+    <form method="post">
+        <iframe id="Vid"
+                width="560"
+                height="315"
+                src="@Model.MyCourse.courseVideo"
+                @*src = "https://www.youtube.com/embed/pqTcHtSSfUE"*@
+                frameborder="0"
+                allowfullscreen></iframe>
+
+        <div class="container bg-white">
+            <div>
+                <label class="col-sm--2 col-form-label">Course Title:</label>
+                <label>@Model.MyCourse.courseTitle</label>
+            </div>
+            <div>
+                <label class="col-sm-2 col-form-label">Course Genre:</label>
+                <label>@Model.MyCourse.courseGenre</label>
+            </div>
+            <div>
+                <label class="col-sm-2 col-form-label">Course Format:</label>
+                @{ if (Model.MyCourse.courseFormat == false)
+                    {
+                        <label>Video</label>
+                    }
+                    else if (Model.MyCourse.courseFormat == true)
+                    {
+                        <label>Live</label>
+                    }
+                }
+            </div>
+            <div>
+                <label class="col-sm-2 col-form-label">Course Details:</label>
+                <label>@Model.MyCourse.courseInfo</label>
+            </div>
+
+        </div>
+    </form>
+</body>

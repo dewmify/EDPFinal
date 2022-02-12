@@ -24,7 +24,7 @@ namespace EDPFinal.Pages.Teacher
         }
         public void OnGet(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 MyCourse = _svc.GetCourse(id);
             }

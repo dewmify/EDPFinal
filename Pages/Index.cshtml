@@ -41,7 +41,6 @@
         border-color: inherit;
     }
 
-        /* First border-left-width setting is a fallback */
         .card-custom-img::after {
             position: absolute;
             content: '';
@@ -85,7 +84,7 @@
         {
 <div class="col-md-6 col-lg-4 pb-3">
 
-    <!-- Add a style="height: XYZpx" to div.card to limit the card height and display scrollbar instead -->
+    <!-- Add a style="height: XXXpx" to div.card to limit the card height and display scrollbar instead -->
     <div class="card card-custom bg-white border-white border-0" style="height: 450px">
         <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
 
@@ -97,7 +96,7 @@
             <p class="card-text"><strong>Price:$</strong> @item.coursePrice</p>
         </div>
         <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a asp-page="/CourseBookings/CoursePage" asp-route-id="@item.courseID" class="btn btn-outline-primary">Book</a>
+            <a asp-page="/Teacher/CourseDetail" asp-route-id="@item.courseID" class="btn btn-outline-primary">Book</a>
         </div>
     </div>
 
