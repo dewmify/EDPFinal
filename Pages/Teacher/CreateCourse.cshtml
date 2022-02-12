@@ -8,7 +8,7 @@
     <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <label class="col-sm-2 col-form-label">Course Title:</label>
-        <input asp-for="MyCourses.courseTitle" />
+        <input asp-for="MyCourses.courseTitle" placeholder="No Special Characters" />
         <span asp-validation-for="MyCourses.courseTitle" class="text-danger"></span>
     </div>
     <div>
@@ -23,8 +23,8 @@
         <span asp-validation-for="MyCourses.courseFormat" class="text-danger"></span>
     </div>
     <div>
-        <label class="col-sm-2 col-form-label">Course Price:</label>
-        <input asp-for="MyCourses.coursePrice" />
+        <label class="col-sm-2 col-form-label">Course Price($):</label>
+        <input asp-for="MyCourses.coursePrice" placeholder="Enter Price Number" />
         <span asp-validation-for="MyCourses.coursePrice" class="text-danger"></span>
     </div>
     <div>
@@ -32,6 +32,16 @@
         <input asp-for="MyCourses.courseInfo" placeholder="Maximum of 500 Characters" />
         <span asp-validation-for="MyCourses.courseInfo" class="text-danger"></span>
     </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Video:</label>
+        <input asp-for="MyCourses.courseVideo" placeholder="Youtube Video Link Here" />
+        <span asp-validation-for="MyCourses.courseVideo" class="text-danger"></span>
+    </div>
+    @*<div>
+            <label class="col-sm-2 col-form-label">Thumbnail:</label>
+            <input asp-for="MyCourses.courseImg" />
+            <span asp-validation-for="MyCourses.courseImg" class="text-danger"></span>
+        </div>*@
     <div class="col-sm-10">
         <input id="create" type="submit" value="Create" class="btn btn-primary" />
     </div>

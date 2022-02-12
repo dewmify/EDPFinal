@@ -28,8 +28,6 @@ namespace EDPFinal.Pages
         
         [BindProperty(SupportsGet = true)]
         public string courseGenre { get; set; }
-        
-        public SearchResultsModel
 
         public async Task OnGetAsync()
         {

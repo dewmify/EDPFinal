@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using EDPFinal.Models;
 using EDPFinal.Services;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +20,7 @@ namespace EDPFinal.Pages.Teacher
         {
             _svc = service;
         }
-
+        //Check session if valid (teacher access only)
         public void OnGet()
         {
         }
@@ -27,6 +28,21 @@ namespace EDPFinal.Pages.Teacher
         {
             if (ModelState.IsValid)
             {
+                //get Session of teacher id
+                HttpContext.Session.SetInt32("userID", 1);
+                MyCourses.userID = (int)HttpContext.Session.GetInt32("userID");
+                var url = MyCourses.courseVideo;
+                var uri = new Uri(url);
+                var query = HttpUtility.ParseQueryString(uri.Query);
+                if (query.AllKeys.Contains("v"))
+                {
+                    MyCourses.courseVideo = "https://youtube.com/embed/" + query["v"];
+                }
+                else
+                {
+                    MyCourses.courseVideo = "https://youtube.com/embed/" + uri.Segments.Last();
+                }
+
                 if (_svc.AddCourse(MyCourses))
                 {
                     return RedirectToPage("./CourseList");

@@ -11,13 +11,14 @@ namespace EDPFinal.Models
     {
         [Key]
         public int BookingID { get; set; }
-
+        [DataType(DataType.DateTime)]
         public DateTime BookingTime { get; set; }
-        //CourseID from Course model
-        [ForeignKey("")]
-        public int CourseID { get; set; }
-        //StudentID from Student model
-        [ForeignKey("")]
-        public int StudentID { get; set; }
+        [ForeignKey("Course")]
+        public int? CourseID { get; set; }
+        [ForeignKey("User")]
+        public int? StudentID { get; set; }
+
+        public Course Course { get; set; }
+        public User User { get; set; }
     }
 }
