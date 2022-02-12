@@ -14,10 +14,9 @@ namespace EDPFinal.Models
         [DataType(DataType.DateTime)]
         public DateTime BookingTime { get; set; }
         [ForeignKey("Course")]
-        public int? CourseID { get; set; }
+        public int CourseID { get; set; }
         [ForeignKey("User")]
         public int? StudentID { get; set; }
-
         public Course Course { get; set; }
         public User User { get; set; }
     }
