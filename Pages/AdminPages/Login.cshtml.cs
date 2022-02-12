@@ -44,6 +44,7 @@ namespace EDPFinal.Pages.AdminPages
             }
             else
             {
+                HttpContext.Session.SetString("role", "admin");
                 HttpContext.Session.SetString("Email", admin.Email.ToString());
                 return RedirectToPage("/Homepage");
             }
