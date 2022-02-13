@@ -34,7 +34,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Course)
+        @foreach (var item in Model.Course.Where(item => item.approvalStatus == true))
             {
                 <tr>
                     <td>
