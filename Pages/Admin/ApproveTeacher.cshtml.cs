@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
 using EDPFinal.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -13,24 +12,35 @@ namespace EDPFinal.Pages.Admin
 {
     public class ApproveTeacherModel : PageModel
     {
-        [BindProperty]
-        public List<UserModel> AllUsers { get; set; }
         private readonly ILogger<ApproveTeacherModel> _logger;
-        private UserService _svc;
-
+        private readonly UserService _svc;
         public ApproveTeacherModel(ILogger<ApproveTeacherModel> logger, UserService service)
         {
             _logger = logger;
             _svc = service;
         }
-        public IActionResult OnGet()
+        [BindProperty]
+
+        public UserModel MyTeacher { get; set; }
+        public IActionResult OnGet(int id)
         {
-            if (HttpContext.Session.GetString("userType") != "admin")
+            if (id != null)
             {
-                return RedirectToPage("../Index");
+                MyTeacher = _svc.GetUserById(id);
             }
-            AllUsers = _svc.GetAllUsers();
-            return Page();
+            else
+                return RedirectToPage("./UnapprovedTeachers");
+
+            MyTeacher.userType = true;
+
+            if (_svc.UpdateUser(MyTeacher))
+            {
+                return RedirectToPage("./UnapprovedTeachers");
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

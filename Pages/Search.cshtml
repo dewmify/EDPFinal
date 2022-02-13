@@ -40,8 +40,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.courseID)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.courseTitle)
+                    <td >
+                        <a asp-page="/Teacher/CourseDetail" asp-route-id="@item.courseID">@Html.DisplayFor(modelItem => item.courseTitle)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.courseGenre)
