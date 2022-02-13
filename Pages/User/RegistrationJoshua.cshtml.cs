@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using EDPFinal.Models;
@@ -39,6 +40,16 @@ namespace EDPFinal.Pages.User
         }
         public IActionResult OnPost()
         {
+            foreach (var file in Request.Form.Files)
+            {
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                Picture = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+            }
+
             if (ModelState.IsValid)
             {
                 myUser.setPassword(Password);
@@ -46,7 +57,6 @@ namespace EDPFinal.Pages.User
                 myUser.profilePictureData = Picture;
                 myUser.userName = Name;
                 myUser.userPhoneNo = Phonenum;
-
 
                 if (_svc.AddUser(myUser))
                 {
