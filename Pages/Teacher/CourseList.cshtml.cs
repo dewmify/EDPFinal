@@ -15,12 +15,16 @@ namespace EDPFinal.Pages.Teacher
     {
         [BindProperty]
         public List<Course> AllCourses { get; set; }
+        [BindProperty]
+        public List<Booking> AllBooking { get; set; }
         private readonly ILogger<CourseListModel> _logger;
         private CourseService _svc;
-        public CourseListModel(ILogger<CourseListModel> logger, CourseService service)
+        private BookingService _bsvc;
+        public CourseListModel(ILogger<CourseListModel> logger, CourseService service, BookingService bservice)
         {
             _logger = logger;
             _svc = service;
+            _bsvc = bservice;
         }
 
         public IActionResult OnGet()
@@ -30,6 +34,7 @@ namespace EDPFinal.Pages.Teacher
                 return RedirectToPage("../Index");
             }
             AllCourses = _svc.GetAllCourses();
+            AllBooking = _bsvc.GetAllBookings();
             return Page();
         }
     }

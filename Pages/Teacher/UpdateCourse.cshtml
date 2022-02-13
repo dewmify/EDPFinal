@@ -7,37 +7,38 @@
 <form method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div>
-        <label class="col-sm-2 col-form-label">Course ID:</label>
-        <input asp-for="MyCourses.courseID" readyonly hidden/>
+        <input asp-for="MyCourses.courseID" readyonly hidden />
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Title:</label>
-        <input asp-for="MyCourses.courseTitle" readonly />
+        <input asp-for="MyCourses.courseTitle" placeholder="No Special Characters" />
+        <span asp-validation-for="MyCourses.courseTitle" class="text-danger"></span>
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Genre:</label>
-        <input asp-for="MyCourses.courseGenre" readonly />
+        @Html.DropDownList("MyCourses.courseGenre", new SelectList(Enum.GetValues(typeof(Models.Genre))), "--Select an option--")
+        <span asp-validation-for="MyCourses.courseGenre" class="text-danger"></span>
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Format:</label>
-        @{ if (Model.MyCourses.courseFormat == false)
-            {
-                <input value="Video" readonly />
-            }
-            else if (Model.MyCourses.courseFormat == true)
-            {
-                <input value="Live" readonly />
-            }
-        }
+        @Html.RadioButton("MyCourses.courseFormat", false)<span>Video</span>
+        @Html.RadioButton("MyCourses.courseFormat", true)<span>Live</span>
+        <span asp-validation-for="MyCourses.courseFormat" class="text-danger"></span>
     </div>
     <div>
-        <label class="col-sm-2 col-form-label">Course Price:</label>
-        <input asp-for="MyCourses.coursePrice" readonly />
+        <label class="col-sm-2 col-form-label">Course Price($):</label>
+        <input asp-for="MyCourses.coursePrice" placeholder="Enter Price Number" />
+        <span asp-validation-for="MyCourses.coursePrice" class="text-danger"></span>
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Course Details:</label>
         <input asp-for="MyCourses.courseInfo" placeholder="Maximum of 500 Characters" />
         <span asp-validation-for="MyCourses.courseInfo" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Video:</label>
+        <input asp-for="MyCourses.courseVideo" placeholder="Youtube Video Link Here" />
+        <span asp-validation-for="MyCourses.courseVideo" class="text-danger"></span>
     </div>
     <div class="col-sm-10">
         <input id="create" type="submit" value="Update" class="btn btn-primary" />

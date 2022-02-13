@@ -11,6 +11,7 @@
             <th>Title</th>
             <th>Genre</th>
             <th>Format</th>
+            <th>Approved</th>
             <th></th>
         </tr>
     </thead>
@@ -19,6 +20,7 @@
             {
                 @foreach (var cor in Model.AllCourses.Where(i => i.userID == HttpContext.Session.GetInt32("ID")))
                 {
+                    
                     <tr>
                         <td>@cor.courseTitle</td>
                         <td>@cor.courseGenre</td>
@@ -31,6 +33,7 @@
                                 <td>Live</td>
                             }
                         }
+                        <td>@cor.approvalStatus</td>
                         <td>
                             <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.courseID">View</a>
                             <a asp-page="/Teacher/UpdateCourse" asp-route-id="@cor.courseID">Update</a>

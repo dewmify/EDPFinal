@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using EDPFinal.Models;
 using EDPFinal.Services;
 using Microsoft.AspNetCore.Http;
@@ -44,7 +45,19 @@ namespace EDPFinal.Pages.Teacher
             {
                 return Page();
             }
-            if (_svc.UpdateCourse(MyCourses) == true)
+            MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
+            var url = MyCourses.courseVideo;
+            var uri = new Uri(url);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            if (query.AllKeys.Contains("v"))
+            {
+                MyCourses.courseVideo = "https://youtube.com/embed/" + query["v"];
+            }
+            else
+            {
+                MyCourses.courseVideo = "https://youtube.com/embed/" + uri.Segments.Last();
+            }
+            if (_svc.UpdateCourse(MyCourses))
             {
                 return RedirectToPage("./CourseList");
             }

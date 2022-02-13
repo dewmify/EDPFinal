@@ -31,15 +31,18 @@ namespace EDPFinal.Pages.CourseBookings
         [BindProperty]
         public Course coursedetails { get; set; }
 
-        public string titleValue;
-        public string genreValue;
         public string formatValue;
-        public string priceValue;
-        public string infoValue;
 
         public IActionResult OnGet(int Id)
         {
             coursedetails = _coursesvc.GetCourse(Id);
+            if (coursedetails.courseFormat == false)
+            {
+                formatValue = "Video";
+            }else if (coursedetails.courseFormat == true)
+            {
+                formatValue = "Live";
+            }
             HttpContext.Session.SetInt32("CourseID", coursedetails.courseID);
             return Page();
 
