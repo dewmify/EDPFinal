@@ -39,7 +39,7 @@ namespace EDPFinal.Pages.SuperAdmin
                 MyAdmin.adminEmail = Email;
                 if (_svc.AddAdmin(MyAdmin))
                 {
-                    return RedirectToPage("/SuperAdmin/AdminDetail");
+                    return RedirectToPage("/SuperAdmin/AdminList");
                 }
             }
             return Page();
