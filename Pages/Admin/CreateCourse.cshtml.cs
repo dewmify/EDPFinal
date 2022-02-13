@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,6 +16,7 @@ namespace EDPFinal.Pages.Admin
     {
         [BindProperty]
         public Course MyCourses { get; set; }
+        public byte[] courseImage { get; set; }
         private readonly CourseService _svc;
         public CreateCourseModel(CourseService service)
         {
@@ -30,11 +32,22 @@ namespace EDPFinal.Pages.Admin
             return Page();
         }
 
-            public IActionResult OnPost()
+        public IActionResult OnPost()
         {
+            foreach (var file in Request.Form.Files)
+            {
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                courseImage = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+            }
+
             if (ModelState.IsValid)
             {
                 MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
+                MyCourses.courseImg = courseImage;
                 var url = MyCourses.courseVideo;
                 var uri = new Uri(url);
                 var query = HttpUtility.ParseQueryString(uri.Query);
