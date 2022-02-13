@@ -65,13 +65,13 @@
         }
 
     .card-custom-avatar img {
-        border-radius: 50%;
         box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
         position: absolute;
-        top: 100px;
-        left: 1.25rem;
-        width: 100px;
-        height: 100px;
+        top: 35px;
+        width: 250px;
+        height: 150px;
+        left:10px;
+        border-radius:10px;
     }
 </style>
 
@@ -91,6 +91,11 @@
     <!-- Add a style="height: XXXpx" to div.card to limit the card height and display scrollbar instead -->
     <div class="card card-custom bg-white border-white border-0" style="height: 450px">
         <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
+
+
+        <div class="card-custom-avatar">
+            <img class="img-fluid" src="@ViewData["ImageDataUrl"]" alt="Avatar" />
+        </div>
 
         <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title">@item.courseTitle</h4>
