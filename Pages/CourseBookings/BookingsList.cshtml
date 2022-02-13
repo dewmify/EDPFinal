@@ -21,7 +21,8 @@
                         <td>@cor.BookingTime</td>   
                         <td>
                             <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.CourseID">View Course</a>
-                            <a asp-page="/CourseBookings/UpdateBooking" asp-route-id="@cor.BookingID">Update Booking</a>
+                            <a asp-page="/CourseBookings/UpdateBooking" asp-route-id="@cor.BookingID">Update</a>
+                            <a asp-page="/CourseBookings/BookingDelete" asp-route-id="@cor.BookingID" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                         </td>
                     </tr>
                 }

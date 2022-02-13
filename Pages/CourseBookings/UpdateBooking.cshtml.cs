@@ -19,7 +19,6 @@ namespace EDPFinal.Pages.CourseBookings
         private readonly BookingService _svc;
 
         public string formatValue;
-        public string titleValue;
         public int courseID;
         public UpdateBookingModel(BookingService service, CourseService service1)
         {
