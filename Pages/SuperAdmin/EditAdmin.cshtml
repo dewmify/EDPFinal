@@ -8,11 +8,6 @@
 <form method="post">
 
     <div asp-validation-summary="All" class="text-danger"></div>
-    <div>
-        <label class="col-sm-2 col-form-label">Admin Id:</label>
-        <input asp-for="MyAdmin.adminID" />
-        <span asp-validation-for="MyAdmin.adminID" class="text-danger"></span>
-    </div>
 
 
     <div>
@@ -20,13 +15,7 @@
         <input asp-for="MyAdmin.adminEmail" />
         <span asp-validation-for="MyAdmin.adminEmail" class="text-danger"></span>
     </div>
-
-    <div>
-        <label class="col-sm-2 col-form-label">Admin Password:</label>
-        <input asp-for="MyAdmin.adminPassword" />
-        <span asp-validation-for="MyAdmin.adminPassword" class="text-danger"></span>
-
-    </div>
+    
 
     <div class="col-sm-10">
         <input id="edit" type="submit" value="Save" class="btn btn-primary" />

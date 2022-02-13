@@ -30,6 +30,8 @@ namespace EDPFinal.Models
         public bool userType { get; set; }
         public byte[] profilePictureData { get; set; }
 
+        public byte[] ResumePDF { get; set; }
+
 
     }
 }
