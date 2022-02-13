@@ -9,7 +9,7 @@
         <h2>Sign up</h2>
         <br />
     </div>
-    <form  class="formBox" method="post">
+    <form  class="formBox" method="post" enctype="multipart/form-data">
         <div class="childformBox">
             <span class="labelBox">Email</span><br />
             <input type="text" asp-for="Email" placeholder="Enter your Email" name="Email"/>          
@@ -25,6 +25,11 @@
             <span class="labelBox">Phone number</span><br />
             <input type="text"  asp-for="Phonenum" placeholder="8 digits phone number" name="Phonenum"/>          
               <span asp-validation-for="Phonenum" class="text-danger"></span>
+        </div>
+        <br />
+        <div>
+            <span class="labelBox">Profile Picture (Optional)</span><br />
+            <input type ="file" asp-for="Picture" name="Picture"/>
         </div>
         <br />
         <div class="childformBox">
