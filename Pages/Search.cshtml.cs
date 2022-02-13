@@ -13,9 +13,6 @@ namespace EDPFinal.Pages
 {
     public class SearchResultsModel : PageModel
     {
-        public void OnGet()
-        {
-        }
 
         private readonly CourseDbContext _context;
 

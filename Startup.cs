@@ -29,6 +29,7 @@ namespace EDPFinal
             services.AddSession();
             services.AddHttpContextAccessor();
             services.AddTransient<Services.AdminService>();
+            services.AddDbContext<AdminDBContext>();
             services.AddDbContext<CourseDbContext>();
             services.AddDbContext<UserDbContext>();
             services.AddDbContext<BookingDBContext>();

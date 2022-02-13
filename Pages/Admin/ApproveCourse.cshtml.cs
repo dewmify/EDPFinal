@@ -15,8 +15,12 @@ namespace EDPFinal.Pages.Admin
     {
         [BindProperty]
         public List<Course> AllCourses { get; set; }
+
+        public Course MyCourses { get; set; }
         private readonly ILogger<ApproveCourseModel> _logger;
         private CourseService _svc;
+
+
 
         public ApproveCourseModel(ILogger<ApproveCourseModel> logger, CourseService service)
         {
@@ -31,6 +35,17 @@ namespace EDPFinal.Pages.Admin
             }
             AllCourses = _svc.GetAllCourses();
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            MyCourses = _svc.GetCourse(MyCourses.courseID);
+            if (ModelState.IsValid)
+            {
+                MyCourses.approvalStatus = true;
+                return RedirectToPage("/ApprovedCourseConfirmed") ;
+            }
+            return RedirectToPage("");
         }
     }
 }
