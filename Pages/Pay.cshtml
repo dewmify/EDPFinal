@@ -1,0 +1,138 @@
+﻿@page
+@model EDPFinal.Pages.PayModel
+@{
+    ViewData["Title"] = "Pay";
+}
+<style>
+    .fz24 {
+        font-size: 24px;
+    }
+
+    .pay-item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .addcode {
+        color: cornflowerblue;
+    }
+
+    .boder-bottom-1 {
+        border-bottom: 1px solid #000;
+    }
+
+    .split {
+        position: relative;
+    }
+
+        .split .line {
+            border: 1px solid #000;
+        }
+
+        .split .content {
+            line-height: 40px;
+            background: #9370db;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+    .br1 {
+        border-right: 1px solid #000;
+    }
+</style>
+<body>
+   
+    <div class="row">
+        <div class="col-md-6 p-lg-5 fz24  br1">
+            <div>
+                <div>
+                    Pay For @Model.course.courseTitle
+                </div>
+                <div>
+                    $@Model.course.coursePrice
+                </div>
+            </div>
+            <div>
+                <div class="mt-1  pay-item"><span>Initial Payment</span><span>$@Model.course.coursePrice</span></div>
+                <div class="mt-1 pay-item boder-bottom-1"><span>Subtotal</span><span>$@Model.course.coursePrice</span></div>
+                @*<div class="mt-1 addcode boder-bottom-1">Add Promotion code</div>*@
+                <div class="mt-1 pay-item"><span>Total due</span><span>$@Model.course.coursePrice</span></div>
+            
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="offset-md-4 col-md-8">
+@*                <button>
+                    Google Pay
+                </button>*@
+
+                <br />
+                <br />
+@*                <button>
+                    Apple Pay
+                </button>*@
+                <br />
+                <br />
+                
+                <div class="split">
+                    <div text="align-center" class="content">Pay by credit card</div>
+                    <div class="line">
+
+                    </div>
+                   
+                </div>
+                <br />
+                <br />
+                <form class="formBox" method="post">
+
+                    <div class="childformBox">
+
+                        <input type="text" asp-for="Email" placeholder="Enter your Email" name="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="childformBox">
+
+                        <input type="text" asp-for="Name" placeholder="Enter your Name" name="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="childformBox">
+                        <span class="labelBox">Credit Card Number</span><br />
+                        <input type="text" asp-for="CardNumber" placeholder="Enter your CardNumber" name="CardNumber" />
+                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="childformBox">
+                        <span class="labelBox">Exp Date</span><br />
+                        <input type="date" asp-for="ExpDate" placeholder="Enter your ExpDate" name="ExpDate" />
+                        <span asp-validation-for="ExpDate" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="childformBox">
+                        <span class="labelBox">CVV</span><br />
+                        <input type="text" asp-for="Cvv" placeholder="Enter your CVV" name="Cvv" />
+                        <span asp-validation-for="Cvv" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="childformBox">
+                        <span class="labelBox">Postal Code</span><br />
+                        <input type="text" asp-for="PostalCode" placeholder="Enter your PostalCode" name="PostalCode" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <button type="submit">Submit</button>
+                    <br />
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@section   Scripts {
+    @Html.Raw(@Model.message)
+}
