@@ -24,8 +24,7 @@ namespace EDPFinal.Models
         public double? coursePrice { get; set; }
         public string courseGenre { get; set; }
         public bool courseFormat { get; set; }
-        [NotMapped]
-        public IFormFile courseImg { get; set; }
+        public byte[] courseImg { get; set; }
         public string? courseVideo { get; set; }
         [ForeignKey("User")]
         public int userID { get; set; }

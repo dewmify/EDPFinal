@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,6 +16,7 @@ namespace EDPFinal.Pages.Teacher
     {
         [BindProperty]
         public Course MyCourses { get; set; }
+        public byte[] courseImage { get; set; }
         private readonly CourseService _svc;
         public UpdateCourseModel(CourseService service)
         {
@@ -31,6 +33,14 @@ namespace EDPFinal.Pages.Teacher
             {
                 return NotFound();
             }
+            if (MyCourses.courseImg != null)
+            {
+                string imageBase64Data = Convert.ToBase64String(MyCourses.courseImg);
+                string imageDataURL = string.Format("data:image/jpg;base64,{0}",
+                       imageBase64Data);
+
+                ViewData["ImageDataUrl"] = imageDataURL;
+            }
             MyCourses = _svc.GetCourse(id);
             if (MyCourses == null)
             {
@@ -41,6 +51,15 @@ namespace EDPFinal.Pages.Teacher
 
         public IActionResult OnPost()
         {
+            foreach (var file in Request.Form.Files)
+            {
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                courseImage = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+            }
             if (!ModelState.IsValid)
             {
                 return Page();

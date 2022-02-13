@@ -31,12 +31,12 @@ namespace EDPFinal
             services.AddHttpContextAccessor();
             services.AddTransient<Services.AdminService>();
             services.AddDbContext<AdminDBContext>();
-            services.AddDbContext<CourseDbContext>((o =>
+            services.AddDbContext<CourseDbContext>(o =>
             {
                 o.UseSqlServer("data source=.; " +
                     "initial catalog= SkillsLahDB; " +
                     "integrated security=true");
-            }););
+            });
             services.AddDbContext<UserDbContext>(o =>
             {
                 o.UseSqlServer("data source=.; " +
