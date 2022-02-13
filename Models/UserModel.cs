@@ -32,6 +32,20 @@ namespace EDPFinal.Models
 
         public byte[] ResumePDF { get; set; }
 
+        public void setPassword(string password)
+        {
+            var hash = BCrypt.Net.BCrypt.HashPassword(password, 12);
+            userPassword = hash;
+        }
+
+        public bool comparePassword(string str)
+        {
+            var currentPassword = userPassword;
+
+            var isPasswordMatching = BCrypt.Net.BCrypt.Verify(str, currentPassword);
+            return isPasswordMatching;
+        }
+
 
     }
 }

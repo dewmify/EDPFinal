@@ -60,6 +60,7 @@ namespace EDPFinal.Services
         {
             bool updated = true;
             _context.Attach(theadmin).State = EntityState.Modified;
+            _context.Update(theadmin);
             try
             {
                 /*_context.Update(theadmin);*/
