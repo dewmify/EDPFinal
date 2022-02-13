@@ -38,7 +38,7 @@ namespace EDPFinal.Pages.Admin
         public IActionResult OnPost()
         {
 
-            MyAdmin = _svc.GetAdminByEmail(MyAdmin.adminEmail);
+            MyAdmin = _svc.GetAdminByEmail(Email);
             if(Email.Equals(MyAdmin.adminEmail) && MyAdmin.comparePassword(Password))
             {
                 HttpContext.Session.SetString("userType", "admin");

@@ -15,6 +15,8 @@ namespace EDPFinal.Pages.Admin
     {
         [BindProperty]
         public List<UserModel> AllUsers { get; set; }
+
+        public UserModel MyUser { get; set; }
         private readonly ILogger<ApproveTeacherModel> _logger;
         private UserService _svc;
 
@@ -30,6 +32,15 @@ namespace EDPFinal.Pages.Admin
                 return RedirectToPage("../Index");
             }
             AllUsers = _svc.GetAllUsers();
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
             return Page();
         }
     }
