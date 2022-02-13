@@ -19,6 +19,7 @@ namespace EDPFinal.Services
         }
 
         public List<UserModel> AllUsers { get; private set; }
+        public object Users { get; internal set; }
 
         public List<UserModel> GetAllUsers()
         {
@@ -52,7 +53,11 @@ namespace EDPFinal.Services
             var userObject = _context.Users.SingleOrDefault(o => o.userPhoneNo == userPhoneNo);
             return userObject;
         }
-
+        public UserModel GetUserByAccount(string account)
+        {
+            var userObject = _context.Users.SingleOrDefault(o => o.userEmail == account || o.userPhoneNo == account);
+            return userObject;
+        }
         public bool UpdateUser(UserModel userObject)
         {
             _context.Attach(userObject).State = EntityState.Modified;

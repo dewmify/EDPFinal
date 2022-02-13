@@ -57,7 +57,7 @@ namespace EDPFinal.Pages.CourseBookings
 
                 if (_svc.AddBooking(MyBooking))
                 {
-                    return RedirectToPage("../TeacherGuides/GuideConfirm");
+                    return RedirectToPage("/Pay",new { id= MyBooking.CourseID });
                 }
             }
             return Page();
