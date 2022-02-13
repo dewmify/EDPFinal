@@ -1,41 +1,5 @@
 ﻿@page
 @model EDPFinal.Pages.Admin.ApproveCourseModel
 @{
-    ViewData["Title"] = "Approve Courses - Admin";
+    ViewData["Title"] = "Approve Course";
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Format</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ if (Model.AllCourses != null)
-            {
-                @foreach (var cor in Model.AllCourses.Where(i => i.approvalStatus == false))
-                {
-                        <tr>
-                            <td>@cor.courseTitle</td>
-                            <td>@cor.courseGenre</td>
-                            @{ if (cor.courseFormat == false)
-                                {
-                                    <td>Video</td>
-                                }
-                                else if (cor.courseFormat == true)
-                                {
-                                    <td>Live</td>
-                                }
-                            }
-                            <td>
-                                <button onclick="ApproveCourse">Approve</button>
-                            </td>
-                        </tr>
-                 }
-            }
-         }
-    </tbody>
-</table>

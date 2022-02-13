@@ -1,35 +1,5 @@
 ﻿@page
 @model EDPFinal.Pages.Admin.ApproveTeacherModel
 @{
-    ViewData["Title"] = "Approve Teachers - Admin";
+    ViewData["Title"] = "Approve Teacher";
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>User Email</th>
-            <th>Username</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ if (Model.AllUsers != null)
-            {
-                //Changed logic so that if it will only display users whos registrationstatus is true
-                //registrationStatus will change to true when user submits registration for teacher
-                //If approved by admin, change userType to true
-                @foreach (var u in Model.AllUsers.Where(i => i.registrationStatus == true))
-                 {
-                    <tr>
-                        <td>@u.userID</td>
-                        <td>@u.userEmail</td>
-                        <td>@u.userName</td>
-                        <td><button type="submit">Approve</button></td>
-                    </tr>
-                    }
-                }
-            }
-    </tbody>
-</table>
-

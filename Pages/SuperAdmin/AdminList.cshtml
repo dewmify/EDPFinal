@@ -4,11 +4,17 @@
     ViewData["Title"] = "Admin List Page";
 }
 
+<h1>All Admins</h1>
+<br />
+<a href="CreateAdmin">Create another admin</a>
+<br />
 <table class="table">
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.alladmins[0].adminID)</th>
             <th>@Html.DisplayNameFor(model => model.alladmins[0].adminEmail)</th>
+            <th></th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
