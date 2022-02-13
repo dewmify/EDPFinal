@@ -1,0 +1,51 @@
+﻿@page
+@model EDPFinal.Pages.CourseBookings.UpdateBookingModel
+@{
+}
+
+<style>
+    #btnbook{
+        text-align:right;
+    }
+</style>
+<h1>This is the create booking page</h1>
+
+
+
+<h1>Book for @Model.coursedetails.courseTitle</h1>
+
+<form method="post">
+    
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <input asp-for="@Model.MyBooking.BookingID" readonly hidden/>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Title: @Model.coursedetails.courseTitle</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Available Date/Time:</label>
+        <input asp-for="MyBooking.BookingTime" class="form-control" value="" placeholder="Available Date *" />
+        <span asp-validation-for="MyBooking.BookingTime" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Genre:@Model.coursedetails.courseGenre</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Format: @Model.formatValue</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Price: @Model.coursedetails.coursePrice</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Details:@Model.coursedetails.courseInfo</label>
+    </div>
+    <div id="btnbook" class="card-footer" style="background: inherit; border-color: inherit;">
+        <input id="book" type="submit" value="Update" asp-for="MyBooking.BookingID" class="btn btn-outline-primary" />
+    </div>
+
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

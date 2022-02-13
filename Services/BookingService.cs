@@ -49,7 +49,7 @@ namespace EDPFinal.Services
         {
             bool updated = true;
             _context.Attach(thebooking).State = EntityState.Modified;
-
+            _context.Update(thebooking);
             try
             {
                 _context.SaveChanges();

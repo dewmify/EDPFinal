@@ -1,0 +1,31 @@
+﻿@page
+@model EDPFinal.Pages.CourseBookings.BookingsListModel
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Bookings List";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Booked Time</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.AllBookings != null)
+            {
+                @foreach (var cor in Model.AllBookings.Where(i => i.StudentID == HttpContext.Session.GetInt32("ID")))
+                {
+                    <tr>                    
+                        <td>@cor.BookingTime</td>   
+                        <td>
+                            <a asp-page="/Teacher/CourseDetail" asp-route-id="@cor.CourseID">View Course</a>
+                            <a asp-page="/CourseBookings/UpdateBooking" asp-route-id="@cor.BookingID">Update Booking</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
