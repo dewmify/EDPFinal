@@ -31,30 +31,30 @@ namespace EDPFinal.Pages
             }
         }
 
-        public IActionResult OnPost()
-        {
-            if(ResumePDF != null)
-            {
-                Console.WriteLine("made it past line 36");
-                if(ResumePDF.Length > 0 && ResumePDF.Length < 300000)
-                {
-                    Console.WriteLine("made it past line 39");
-                     myUser = _svc.GetUserById(myUser.userID);
+        //public IActionResult OnPost()
+        //{
+        //    if(ResumePDF != null)
+        //    {
+        //        Console.WriteLine("made it past line 36");
+        //        if(ResumePDF.Length > 0 && ResumePDF.Length < 300000)
+        //        {
+        //            Console.WriteLine("made it past line 39");
+        //             myUser = _svc.GetUserById(myUser.userID);
 
-                    using(var target = new MemoryStream())
-                    {
-                        ResumePDF.CopyTo(target);
-                        myUser.ResumePDF = target.ToArray();
-                    }
-                    myUser.userID = (int)HttpContext.Session.GetInt32("ID");
-                    myUser.registrationStatus = true;
-                    if (_svc.UpdateUser(myUser))
-                    {
-                        return RedirectToPage("/UserDetail");
-                    }
-                }
-            }
-            return Page();
-        }
+        //            using(var target = new MemoryStream())
+        //            {
+        //                ResumePDF.CopyTo(target);
+        //                myUser.ResumePDF = target.ToArray();
+        //            }
+        //            myUser.userID = (int)HttpContext.Session.GetInt32("ID");
+        //            myUser.registrationStatus = true;
+        //            if (_svc.UpdateUser(myUser))
+        //            {
+        //                return RedirectToPage("/UserDetail");
+        //            }
+        //        }
+        //    }
+        //    return Page();
+        //}
     }
 }

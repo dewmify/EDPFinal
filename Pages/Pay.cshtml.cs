@@ -49,7 +49,7 @@ namespace EDPFinal.Pages
             {
                 return Page();
             }
-            message = "<script>alert() window.location.href='/CourseBookings/BookingsList'</script>";
+            message = "<script>alert('Successful'); window.location.href='/CourseBookings/BookingsList'</script>";
 
             return Page();
 
