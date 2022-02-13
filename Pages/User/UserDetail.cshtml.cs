@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 namespace EDPFinal.Pages
 {
+    
     public class UserDetailModel : PageModel
     {
      
@@ -18,14 +19,14 @@ namespace EDPFinal.Pages
         {
             _context = userService;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetInt32("ID")!=null)
+            if (HttpContext.Session.GetInt32("ID") != null)
             {
 
                 user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
 
-                if(user.profilePictureData != null)
+                if (user.profilePictureData != null)
                 {
                     string imageBase64Data = Convert.ToBase64String(user.profilePictureData);
                     string imageDataURL = string.Format("data:image/jpg;base64,{0}",
@@ -33,8 +34,12 @@ namespace EDPFinal.Pages
 
                     ViewData["ImageDataUrl"] = imageDataURL;
                 }
-                
+                return Page();
 
+            }
+            else
+            {
+              return   RedirectToPage("/User/Login");
             }
            
         }

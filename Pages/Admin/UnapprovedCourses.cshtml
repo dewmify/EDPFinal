@@ -19,7 +19,9 @@
                 @foreach (var cor in Model.AllCourses.Where(i => i.approvalStatus == false))
                 {
                         <tr>
-                            <td>@cor.courseTitle</td>
+                            <td>
+                                <a asp-route-id="@cor.courseID" asp-page="/Teacher/CourseDetail">@cor.courseTitle</a>
+                            </td>
                             <td>@cor.courseGenre</td>
                             @{ if (cor.courseFormat == false)
                                 {

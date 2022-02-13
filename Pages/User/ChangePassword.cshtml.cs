@@ -33,7 +33,7 @@ namespace EDPFinal.Pages
         {
 
             //GET user
-            var id = Convert.ToInt32(HttpContext.Session.GetString("ID"));
+            var id = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
             var user = _context.GetUserById(id);
             if (user != null)
             {
