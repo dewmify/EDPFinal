@@ -2,6 +2,7 @@ using EDPFinal.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,8 +31,18 @@ namespace EDPFinal
             services.AddHttpContextAccessor();
             services.AddTransient<Services.AdminService>();
             services.AddDbContext<AdminDBContext>();
-            services.AddDbContext<CourseDbContext>();
-            services.AddDbContext<UserDbContext>();
+            services.AddDbContext<CourseDbContext>(o =>
+            {
+                o.UseSqlServer("data source=.; " +
+                    "initial catalog= SkillsLahDB; " +
+                    "integrated security=true");
+            });
+            services.AddDbContext<UserDbContext>(o =>
+            {
+                o.UseSqlServer("data source=.; " +
+                    "initial catalog= SkillsLahDB; " +
+                    "integrated security=true");
+            });
             services.AddDbContext<BookingDBContext>();
             services.AddDbContext<GuidesDbContext>();
             services.AddTransient<Services.UserService>();

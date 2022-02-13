@@ -37,11 +37,10 @@
         <input asp-for="MyCourses.courseVideo" placeholder="Youtube Video Link Here" />
         <span asp-validation-for="MyCourses.courseVideo" class="text-danger"></span>
     </div>
-    @*<div>
-            <label class="col-sm-2 col-form-label">Thumbnail:</label>
-            <input asp-for="MyCourses.courseImg" />
-            <span asp-validation-for="MyCourses.courseImg" class="text-danger"></span>
-        </div>*@
+    <div>
+        <label class="col-sm-2 col-form-label">Thumbnail:</label>
+        <input type="file" asp-for="courseImage" name="courseImage" />
+    </div>
     <div class="col-sm-10">
         <input id="create" type="submit" value="Create" class="btn btn-primary" />
     </div>

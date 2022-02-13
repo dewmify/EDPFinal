@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using EDPFinal.Models;
 using EDPFinal.Services;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +16,7 @@ namespace EDPFinal.Pages.Teacher
     {
         [BindProperty]
         public Course MyCourses { get; set; }
+        public byte[] courseImage { get; set; }
         private readonly CourseService _svc;
         public UpdateCourseModel(CourseService service)
         {
@@ -31,6 +34,14 @@ namespace EDPFinal.Pages.Teacher
                 return NotFound();
             }
             MyCourses = _svc.GetCourse(id);
+            if (MyCourses.courseImg != null)
+            {
+                string imageBase64Data = Convert.ToBase64String(MyCourses.courseImg);
+                string imageDataURL = string.Format("data:image/jpg;base64,{0}",
+                       imageBase64Data);
+
+                ViewData["ImageDataUrl"] = imageDataURL;
+            }
             if (MyCourses == null)
             {
                 return NotFound();
@@ -40,11 +51,33 @@ namespace EDPFinal.Pages.Teacher
 
         public IActionResult OnPost()
         {
+            foreach (var file in Request.Form.Files)
+            {
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                courseImage = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+            }
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            if (_svc.UpdateCourse(MyCourses) == true)
+            MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
+            MyCourses.courseImg = courseImage;
+            var url = MyCourses.courseVideo;
+            var uri = new Uri(url);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            if (query.AllKeys.Contains("v"))
+            {
+                MyCourses.courseVideo = "https://youtube.com/embed/" + query["v"];
+            }
+            else
+            {
+                MyCourses.courseVideo = "https://youtube.com/embed/" + uri.Segments.Last();
+            }
+            if (_svc.UpdateCourse(MyCourses))
             {
                 return RedirectToPage("./CourseList");
             }

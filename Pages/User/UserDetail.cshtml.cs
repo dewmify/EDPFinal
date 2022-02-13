@@ -13,6 +13,7 @@ namespace EDPFinal.Pages
 
         [BindProperty]
         public UserModel user { get; set; }
+
         public UserDetailModel(UserService userService)
         {
             _context = userService;
@@ -20,10 +21,19 @@ namespace EDPFinal.Pages
         public void OnGet()
         {
             if (HttpContext.Session.GetInt32("ID")!=null)
-
             {
-                 user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
 
+                user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
+
+                if(user.profilePictureData != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(user.profilePictureData);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}",
+                           imageBase64Data);
+
+                    ViewData["ImageDataUrl"] = imageDataURL;
+                }
+                
 
             }
            

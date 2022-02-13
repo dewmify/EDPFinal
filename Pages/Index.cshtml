@@ -79,7 +79,7 @@
     <h1 style="text-align:center;" >Recommended Courses</h1>
     @{ if (Model.AllCourses.Count == 0)
         {
-<p style="text-align:center;">There is currently no courses</p> }
+<p style="text-align:center; color:black;">There is currently no courses</p> }
             else
             {
 <div class="container">
@@ -108,7 +108,7 @@
                     }
                 }
             </p>
-            <p class="card-text"><strong>Price:$</strong> @item.coursePrice</p>
+            <p class="card-text"><strong>Price: $</strong>@item.coursePrice</p>
         </div>
         <div class="card-footer" style="background: inherit; border-color: inherit;">
             <a asp-page="/Teacher/CourseDetail" asp-route-id="@item.courseID" class="btn btn-outline-primary">View</a>

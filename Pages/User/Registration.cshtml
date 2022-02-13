@@ -9,39 +9,45 @@
         <h2>Sign up</h2>
         <br />
     </div>
-    <form  class="formBox" method="post">
+    <form class="formBox" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="childformBox">
             <span class="labelBox">Email</span><br />
-            <input type="text" asp-for="Email" placeholder="Enter your Email" name="Email"/>          
-              <span asp-validation-for="Email" class="text-danger"></span>
+            <input type="text" asp-for="Email" placeholder="Enter your Email" name="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <br />
-          <div class="childformBox">
+        <div class="childformBox">
             <span class="labelBox">Your Name (Maximum 15 characters)</span><br />
-            <input type="text"  asp-for="Name" placeholder="Enter your name" name="Name"/>          
+            <input type="text" asp-for="Name" placeholder="Enter your name" name="Name" />
         </div>
         <br />
         <div class="childformBox">
             <span class="labelBox">Phone number</span><br />
-            <input type="text"  asp-for="Phonenum" placeholder="8 digits phone number" name="Phonenum"/>          
-              <span asp-validation-for="Phonenum" class="text-danger"></span>
+            <input type="text" asp-for="Phonenum" placeholder="8 digits phone number" name="Phonenum" />
+            <span asp-validation-for="Phonenum" class="text-danger"></span>
+        </div>
+        <br />
+        <div>
+            <span class="labelBox">Profile Picture (Optional)</span><br />
+            <input type="file" asp-for="Picture" name="Picture" />
         </div>
         <br />
         <div class="childformBox">
             <span class="labelBox">Password</span><br />
-            <input type="password"  asp-for="Password" placeholder="Enter your password" name="Password"/>          
+            <input type="password" asp-for="Password" placeholder="Enter your password" name="Password" />
         </div>
         <br />
         <div class="childformBox">
             <span class="labelBox">Confirm password</span><br />
-            <input type="password"  asp-for="CfmPassword" placeholder="Confirm your password" name="CfmPassword"/>          
-       <br />
-       <br />
-       <button type="submit">Sign Up</button>
+            <input type="password" asp-for="CfmPassword" placeholder="Confirm your password" name="CfmPassword" />
+            <br />
+            <br />
+            <button type="submit">Sign Up</button>
         </div>
         <br />
         <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
-           <a href="Login" style="font-size:20px;">Already have an account? Sign in here</a><asp:Button ID="Button1" runat="server" BackColor="#990099" Font-Size="Large" ForeColor="White" Height="46px" OnClick="Button1_Click" Text="Sign up" Width="132px" />
+            <a href="Login" style="font-size:20px;">Already have an account? Sign in here</a><asp:Button ID="Button1" runat="server" BackColor="#990099" Font-Size="Large" ForeColor="White" Height="46px" OnClick="Button1_Click" Text="Sign up" Width="132px" />
         </div>
-       </form>
+    </form>
 </body>

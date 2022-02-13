@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace EDPFinal.Pages
 {
@@ -22,11 +23,25 @@ namespace EDPFinal.Pages
         [BindProperty] public string Password { get;set;}
         [BindProperty] public string CfmPassword { get; set; }
         [BindProperty] public string Name { get; set; }
+
         [BindProperty]
         [StringLength(maximumLength:8,MinimumLength =8)]
         public string Phonenum { get; set; }
+
+        public byte[] Picture { get; set; }
+
         public IActionResult OnPost()
         {
+            foreach(var file in Request.Form.Files)
+            {
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                Picture = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -36,7 +51,8 @@ namespace EDPFinal.Pages
                 userEmail = Email,
                 userPassword =Md5.GetMD5(Password),
                 userName = Name,
-                userPhoneNo = Phonenum
+                userPhoneNo = Phonenum,
+                profilePictureData = Picture
             };
             _context.AddUser(newUser);
             return RedirectToPage("Login");

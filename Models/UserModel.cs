@@ -16,7 +16,7 @@ namespace EDPFinal.Models
 
         [Required, MaxLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string userName { get; set; }
-        
+
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string userPassword { get; set; }
@@ -28,6 +28,8 @@ namespace EDPFinal.Models
         public bool registrationStatus { get; set; }
 
         public bool userType { get; set; }
+        public byte[] profilePictureData { get; set; }
+
 
     }
 }
