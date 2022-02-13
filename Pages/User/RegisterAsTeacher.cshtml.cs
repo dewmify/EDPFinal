@@ -18,7 +18,7 @@ namespace EDPFinal.Pages
         }
 
         [BindProperty]
-        public IFormFile ResumePDF { get; set; }
+        public IFormFile file { get; set; }
         
         [BindProperty]
         public UserModel myUser { get; set; }
@@ -33,20 +33,20 @@ namespace EDPFinal.Pages
 
         public IActionResult OnPost()
         {
-            if(ResumePDF != null)
+            Console.WriteLine("Starting OnPost");
+            if(file != null)
             {
-                Console.WriteLine("made it past line 36");
-                if(ResumePDF.Length > 0 && ResumePDF.Length < 300000)
+                Console.WriteLine("made it to line 39");
+                if(file.Length > 0 && file.Length < 300000)
                 {
-                    Console.WriteLine("made it past line 39");
-                     myUser = _svc.GetUserById(myUser.userID);
-
-                    using(var target = new MemoryStream())
+                    Console.WriteLine("Made it to line 42");
+                    using (var target = new MemoryStream())
                     {
-                        ResumePDF.CopyTo(target);
+                        file.CopyTo(target);
                         myUser.ResumePDF = target.ToArray();
                     }
                     myUser.userID = (int)HttpContext.Session.GetInt32("ID");
+                    myUser.userPassword = myUser.userPassword;
                     myUser.registrationStatus = true;
                     if (_svc.UpdateUser(myUser))
                     {

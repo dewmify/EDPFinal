@@ -13,9 +13,14 @@
 
 
 <form method="post" enctype="multipart/form-data">
-  <input asp-for="ResumePDF" type="file" accept=".pdf" id="ResumePDF" name="ResumePDF">
-  <br />
-  <br />
-  <input type="submit">
+    <input type="text" asp-for="myUser.userEmail" placeholder="Enter your Email" hidden readonly />
+    <input type="text" asp-for="myUser.userName" placeholder="Enter your name" hidden readonly />
+    <input type="text" asp-for="myUser.userPhoneNo" placeholder="8 digits phone number" hidden readonly />
+    <input type="file" accept=".jpeg, .gif, .png" asp-for="myUser.profilePictureData" hidden readonly />
+    <input type="password" asp-for="" placeholder="Enter your password" hidden readonly />
+    <input asp-for="file" type="file" accept=".pdf" class="form-control">
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn btn-success">
 
 </form>
