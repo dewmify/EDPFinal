@@ -1,0 +1,30 @@
+﻿@page
+@model EDPFinal.Pages.User.LoginJordanModel
+@{
+}
+
+<body>
+    <form id="form1" runat="server" class="formBox" method="post">
+        <div class="titleBox">
+            <h2>Log In</h2>
+        </div>
+        <div class="usernameBox">
+            <span class="labelBox">Email</span><br />
+            <input type="text" asp-for="Email" name="Email" class="Email" placeholder="Enter email/phone number" />
+        </div>
+        <br />
+        <div class="passwordBox">
+            <span class="labelBox">Password</span><br />
+            <input type="password" asp-for="Password" name="Password" class="Password" placeholder="Enter password" />
+        </div>
+        <br />
+        <button a href="Homepage" type="submit">Log in</button>
+        <br />
+        <p class="text-danger">@Model.errormessage</p>
+        <br />
+
+        <div style="width:100%;display:flex;justify-content:center;margin-top:25px;">
+            <a href="Registration" style="font-size:20px;">Dont have an account? Sign up here</a>
+        </div>
+    </form>
+</body>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace EDPFinal.Pages
@@ -18,10 +19,12 @@ namespace EDPFinal.Pages
         }
 
         [BindProperty]
-        public IFormFile ResumePDF { get; set; }
+        public IFormFile file { get; set; }
         
         [BindProperty]
         public UserModel myUser { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
 
         public void OnGet()
         {
@@ -31,30 +34,26 @@ namespace EDPFinal.Pages
             }
         }
 
-        //public IActionResult OnPost()
-        //{
-        //    if(ResumePDF != null)
-        //    {
-        //        Console.WriteLine("made it past line 36");
-        //        if(ResumePDF.Length > 0 && ResumePDF.Length < 300000)
-        //        {
-        //            Console.WriteLine("made it past line 39");
-        //             myUser = _svc.GetUserById(myUser.userID);
-
-        //            using(var target = new MemoryStream())
-        //            {
-        //                ResumePDF.CopyTo(target);
-        //                myUser.ResumePDF = target.ToArray();
-        //            }
-        //            myUser.userID = (int)HttpContext.Session.GetInt32("ID");
-        //            myUser.registrationStatus = true;
-        //            if (_svc.UpdateUser(myUser))
-        //            {
-        //                return RedirectToPage("/UserDetail");
-        //            }
-        //        }
-        //    }
-        //    return Page();
-        //}
+        public IActionResult OnPost()
+        {
+            if(file != null)
+            {
+                if(file.Length > 0 && file.Length < 300000)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        file.CopyTo(target);
+                        myUser.ResumePDF = target.ToArray();
+                    }
+                    myUser.userID = (int)HttpContext.Session.GetInt32("ID");
+                    myUser.registrationStatus = true;
+                    if (_svc.UpdateUser(myUser))
+                    {
+                        return RedirectToPage("./UserDetail");
+                    }
+                }
+            }
+            return Page();
+        }
     }
 }
