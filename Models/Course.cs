@@ -29,6 +29,7 @@ namespace EDPFinal.Models
         [ForeignKey("User")]
         public int userID { get; set; }
         public bool approvalStatus { get; set; }
+        public string fakestring { get; set; }
 
         public UserModel User { get; set; }
     }

@@ -2,6 +2,12 @@
 @model EDPFinal.Pages.TeacherGuides.CreateGuideModel
 @{
 }
+<style>
+    #guideinput{
+        height:75px;
+        width:400px;
+    }
+</style>
 
 <h1>Create Guide</h1>
 
@@ -21,7 +27,7 @@
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Guide Information:</label>
-        <input asp-for="MyGuide.guideInfo" />
+        <textarea id="guideinput" asp-for="MyGuide.guideInfo"></textarea>
         <span asp-validation-for="MyGuide.guideInfo" class="text-danger"></span>
     </div>
 

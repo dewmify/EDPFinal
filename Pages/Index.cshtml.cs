@@ -26,12 +26,16 @@ namespace EDPFinal.Pages
         public void OnGet()
         {
             AllCourses = _svc.GetAllCourses();
+            List<Course> newcourse = new List<Course>();
             foreach(var i in AllCourses.Where(i => i.courseImg != null))
             {
                 string imageBase64Data = Convert.ToBase64String(i.courseImg);
                 string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
                 ViewData["ImageDataUrl"] = imageDataURL;
+                i.fakestring = imageDataURL;
+                newcourse.Add(i);
             }
+            AllCourses = newcourse;
 
         }
     }
