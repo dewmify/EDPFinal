@@ -18,7 +18,7 @@ namespace EDPFinal.Pages
             _context = userService;
         }
         [BindProperty]
-        [EmailAddress]
+        [EmailAddress, RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Invalid email")]
         public string Email { get; set; }
         [BindProperty] public string Password { get;set;}
         [BindProperty] public string CfmPassword { get; set; }
