@@ -12,8 +12,8 @@
 </div>
 
 
-<form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
+<form method="post" enctype="multipart/form-data">
+  <input asp-for="ResumePDF" type="file" accept=".pdf" id="ResumePDF" name="ResumePDF">
   <br />
   <br />
   <input type="submit">
