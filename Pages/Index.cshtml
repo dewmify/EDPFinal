@@ -68,10 +68,13 @@
         box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
         position: absolute;
         top: 35px;
-        width: 250px;
+        width: 300px;
         height: 150px;
-        left:10px;
         border-radius:10px;
+    }
+
+    .card-custom-avatar{
+        padding-left: 15px;
     }
 </style>
 
@@ -84,7 +87,7 @@
             {
 <div class="container">
     <div class="row pt-5 m-auto">
-        @foreach (var item in Model.AllCourses)
+        @foreach (var item in Model.AllCourses.Where(item => item.approvalStatus == true))
         {
 <div class="col-md-6 col-lg-4 pb-3">
 
