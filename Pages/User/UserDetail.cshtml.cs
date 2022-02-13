@@ -25,13 +25,15 @@ namespace EDPFinal.Pages
 
                 user = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
 
-                string imageBase64Data = Convert.ToBase64String(user.profilePictureData);
-                string imageDataURL = string.Format("data:image/jpg;base64,{0}",
-                    imageBase64Data);
+                if(user.profilePictureData != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(user.profilePictureData);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}",
+                           imageBase64Data);
 
-                ViewData["ImageDataUrl"] = imageDataURL;
-
-
+                    ViewData["ImageDataUrl"] = imageDataURL;
+                }
+                
 
             }
            
