@@ -36,6 +36,7 @@ namespace EDPFinal
             services.AddTransient<Services.UserService>();
             services.AddTransient<Services.GuideService>();
             services.AddTransient<Services.CourseService>();
+            services.AddTransient<Services.BookingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

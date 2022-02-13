@@ -19,9 +19,13 @@ namespace EDPFinal.Pages.TeacherGuides
         [BindProperty]
         public Guides MyGuide { get; set; }
         public string MyMessage { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            if (HttpContext.Session.GetString("userType") != "admin")
+            {
+                return RedirectToPage("../Index");
+            }
+            return Page();
         }
         public IActionResult OnPost()
         {

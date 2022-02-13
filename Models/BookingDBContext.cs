@@ -21,6 +21,6 @@ namespace EDPFinal.Models
             optionBuilder.UseSqlServer(connectionString);
         }
 
-        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Booking> Booking { get; set; }
     }
 }

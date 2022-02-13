@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.AspNetCore.Http
 @model EDPFinal.Pages.Teacher.CourseDetailModel
 @{
     ViewData["Title"] = "Course Details";
@@ -14,10 +15,14 @@
         border-radius:25px;
     }
 
+    #bookcon{
+        text-align:right;
+    }
+
 
 </style>
 <body>
-    <h1>Book for @Model.MyCourse.courseTitle</h1>
+    <h1>@Model.MyCourse.courseTitle</h1>
     <form method="post">
         <iframe id="Vid"
                 width="560"
@@ -52,7 +57,13 @@
                 <label class="col-sm-2 col-form-label">Course Details:</label>
                 <label>@Model.MyCourse.courseInfo</label>
             </div>
-
+            @{ if (HttpContext.Session.GetInt32("ID") != Model.MyCourse.userID)
+                {
+                    <div id="bookcon" class="card-footer" style="background: inherit; border-color: inherit; ">
+                        <a asp-page="/CourseBookings/CreateBooking" asp-route-id="@Model.MyCourse.courseID" class="btn btn-outline-primary" >Book</a>
+                    </div>
+                    }
+                }
         </div>
     </form>
 </body>

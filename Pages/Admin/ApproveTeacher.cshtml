@@ -16,30 +16,20 @@
     <tbody>
         @{ if (Model.AllUsers != null)
             {
-                @foreach (var u in Model.AllUsers)
-                {
-                    @if(u.userType == true && u.registrationStatus == false)
-                    {
-                        <tr>
-                            <td>@u.userID</td>
-                            <td>@u.userEmail</td>
-                            <td>@u.userName</td>
-                            @{ if (u.userType == false)
-                                {
-                                    <td>Non-Teacher</td>
-                                }
-                                else if (u.userType == true)
-                                {
-                                    <td>Teacher</td>
-                                }
-                            }
-                            <td>
-                            </td>
-                        </tr>
+                //Changed logic so that if it will only display users whos registrationstatus is true
+                //registrationStatus will change to true when user submits registration for teacher
+                //If approved by admin, change userType to true
+                @foreach (var u in Model.AllUsers.Where(i => i.registrationStatus == true))
+                 {
+                    <tr>
+                        <td>@u.userID</td>
+                        <td>@u.userEmail</td>
+                        <td>@u.userName</td>
+                        <td></td>
+                    </tr>
                     }
                 }
             }
-        }
     </tbody>
 </table>
 

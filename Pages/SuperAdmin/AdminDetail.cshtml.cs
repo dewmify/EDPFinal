@@ -22,7 +22,7 @@ namespace EDPFinal.Pages.SuperAdmin
             _svc = service;
 
         }
-        public void OnGet(string id)
+        public void OnGet(int id)
         {
             if(id != null)
             {

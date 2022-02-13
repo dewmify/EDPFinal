@@ -23,14 +23,6 @@ namespace EDPFinal.Pages.Teacher
             _svc = service;
 
         }
-        public IActionResult OnGet()
-        {
-            if (HttpContext.Session.GetString("userType") != "True")
-            {
-                return RedirectToPage("../Index");
-            }
-            return Page();
-        }
         public void OnGet(int id)
         {
             if (id != 0)

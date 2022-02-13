@@ -10,22 +10,15 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
 
-
-    <div>
-        <label class="col-sm-2 col-form-label">Admin ID:</label>
-        <input asp-for="MyAdmin.ID" />
-        <span asp-validation-for="MyAdmin.ID" class="text-danger"></span>
-
-    </div>
     <div>
         <label class="col-sm-2 col-form-label">Admin Email:</label>
-        <input asp-for="MyAdmin.Email" />
-        <span asp-validation-for="MyAdmin.Email" class="text-danger"></span>
+        <input asp-for="@Model.Email" />
+        <span asp-validation-for="MyAdmin.adminEmail" class="text-danger"></span>
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Admin Password:</label>
-        <input asp-for="MyAdmin.Password" />
-        <span asp-validation-for="MyAdmin.Password" class="text-danger"></span>
+        <input asp-for="@Model.Password" type="password" />
+        <span asp-validation-for="MyAdmin.adminPassword" class="text-danger"></span>
     </div>
 
 

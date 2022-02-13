@@ -34,7 +34,7 @@ namespace EDPFinal.Pages.Teacher
             if (ModelState.IsValid)
             {
                 //get Session of teacher id
-                MyCourses.userID = (int)HttpContext.Session.GetInt32("userID");
+                MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
                 var url = MyCourses.courseVideo;
                 var uri = new Uri(url);
                 var query = HttpUtility.ParseQueryString(uri.Query);

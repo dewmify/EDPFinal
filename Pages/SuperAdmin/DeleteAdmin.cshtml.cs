@@ -22,7 +22,7 @@ namespace EDPFinal.Pages.SuperAdmin
         [BindProperty]
 
         public AdminModel MyAdmin { get; set; }
-        public IActionResult OnGet(string id)
+        public IActionResult OnGet(int id)
         {
             if (id != null)
             {

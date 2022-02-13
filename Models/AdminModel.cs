@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,11 +9,26 @@ namespace EDPFinal.Models
 {
     public class AdminModel
     {
-        [Required, MinLength(3, ErrorMessage="Enter only 4 characters"), MaxLength(5)]
-        public string ID {get; set;}
-        [Required, RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Enter a valid Email")]
-        public string Email {get; set;}
-        [Required, RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$")]
-        public string Password { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int adminID {get; set;}
+        
+        public string adminEmail {get; set;}
+
+        public string adminPassword { get; set; }
+
+        public void setPassword (string password)
+        {
+            var hash = BCrypt.Net.BCrypt.HashPassword(password, 12);
+            adminPassword = hash;
+        }
+
+        public bool comparePassword (string str)
+        {
+            var currentPassword = adminPassword;
+
+            var isPasswordMatching = BCrypt.Net.BCrypt.Verify(str, currentPassword);
+            return isPasswordMatching;
+        }
     }
 }

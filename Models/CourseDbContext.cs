@@ -17,11 +17,9 @@ namespace EDPFinal.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Get connection string from value of var name in "appsettings"
             string connectionString = _config.GetConnectionString("MyConn");
             optionsBuilder.UseSqlServer(connectionString);
         }
-        //Map entity to tablename in database
         public DbSet<Course> Course { get; set; }
 
     }

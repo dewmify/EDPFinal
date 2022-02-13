@@ -18,7 +18,15 @@ namespace EDPFinal.Pages.Admin
         private AdminService _svc;
 
         [BindProperty]
-        public AdminModel Admin { get; set; }
+        public AdminModel MyAdmin { get; set; }
+
+        [BindProperty]
+        public string Email { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
+
+        [BindProperty]
+        public string errorMessage { get; set; }
         public LoginModel(ILogger<LoginModel> logger, AdminService service)
         {
             _logger = logger;
@@ -30,20 +38,19 @@ namespace EDPFinal.Pages.Admin
         public IActionResult OnPost()
         {
 
-            Admin = _svc.GetAdminByEmail(Admin.Email);
-            if (Admin == null || Admin.Password != Md5.GetMD5(Admin.Password))
+            MyAdmin = _svc.GetAdminByEmail(MyAdmin.adminEmail);
+            if(Email.Equals(MyAdmin.adminEmail) && MyAdmin.comparePassword(Password))
             {
-                errormessage = "Incorrect login details";
-                return Page();
+                HttpContext.Session.SetString("userType", "admin");
+                HttpContext.Session.SetString("Email", MyAdmin.adminEmail.ToString());
+                HttpContext.Session.SetInt32("ID", MyAdmin.adminID);
+                return RedirectToPage("../Index");
             }
             else
             {
-                HttpContext.Session.SetString("userType", "admin");
-                HttpContext.Session.SetString("Email", Admin.Email.ToString());
-                return RedirectToPage("../Index");
+                errorMessage = "Incorrect login details";
+                return Page();
             }
-
-            
         }
         public IActionResult OnGetLogOut()
         {

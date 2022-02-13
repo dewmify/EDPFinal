@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using EDPFinal.Models;
 using EDPFinal.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -19,21 +21,39 @@ namespace EDPFinal.Pages.Admin
             _svc = service;
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnGet()
         {
-            if (ModelState.IsValid)
+            if (HttpContext.Session.GetString("userType") != "admin")
             {
-                if (_svc.AddCourse(MyCourses))
-                {
-                    return RedirectToPage("");
-                }
-
+                return RedirectToPage("../Index");
             }
             return Page();
         }
 
-        public void OnGet()
+            public IActionResult OnPost()
         {
+            if (ModelState.IsValid)
+            {
+                MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
+                var url = MyCourses.courseVideo;
+                var uri = new Uri(url);
+                var query = HttpUtility.ParseQueryString(uri.Query);
+                if (query.AllKeys.Contains("v"))
+                {
+                    MyCourses.courseVideo = "https://youtube.com/embed/" + query["v"];
+                }
+                else
+                {
+                    MyCourses.courseVideo = "https://youtube.com/embed/" + uri.Segments.Last();
+                }
+
+                if (_svc.AddCourse(MyCourses))
+                {
+                    return RedirectToPage("./CourseList");
+                }
+
+            }
+            return Page();
         }
     }
 }
