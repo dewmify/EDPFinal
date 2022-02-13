@@ -33,6 +33,7 @@ namespace EDPFinal.Pages.Teacher
             {
                 return NotFound();
             }
+            MyCourses = _svc.GetCourse(id);
             if (MyCourses.courseImg != null)
             {
                 string imageBase64Data = Convert.ToBase64String(MyCourses.courseImg);
@@ -41,7 +42,6 @@ namespace EDPFinal.Pages.Teacher
 
                 ViewData["ImageDataUrl"] = imageDataURL;
             }
-            MyCourses = _svc.GetCourse(id);
             if (MyCourses == null)
             {
                 return NotFound();
@@ -65,6 +65,7 @@ namespace EDPFinal.Pages.Teacher
                 return Page();
             }
             MyCourses.userID = (int)HttpContext.Session.GetInt32("ID");
+            MyCourses.courseImg = courseImage;
             var url = MyCourses.courseVideo;
             var uri = new Uri(url);
             var query = HttpUtility.ParseQueryString(uri.Query);
