@@ -35,12 +35,27 @@ namespace EDPFinal.Pages.Admin
             return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int id)
         {
-            if (ModelState.IsValid)
+            var user = _svc.GetUserById(id);
+            if(user == null)
             {
-
+                return NotFound();
             }
+            if (user.ResumePDF == null)
+            {
+                return Page();
+            }
+            else
+            {
+                byte[] byteArr = user.ResumePDF;
+                string mimeType = "application/pdf";
+                return new FileContentResult(byteArr, mimeType)
+                {
+                    FileDownloadName = $"Resume {MyUser.userName}.pdf"
+                };
+            }
+            
             return Page();
         }
     }

@@ -10,6 +10,7 @@
             <th>User ID</th>
             <th>User Email</th>
             <th>Username</th>
+            <th>Resume</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,6 +26,13 @@
                         <td>@u.userID</td>
                         <td>@u.userEmail</td>
                         <td>@u.userName</td>
+
+                        <td>
+                            <form asp-page-handler="Download" method="post" asp-route-id="@u.userID">
+                                <input type="submit" value="Download"/>
+                            </form>
+                        </td>
+
                         <td>
                             <a asp-route-id="@u.userID" onclick="return confirm('Confirm approval')" asp-page="/Admin/ApproveTeacher">Approve</a>
                         </td>
