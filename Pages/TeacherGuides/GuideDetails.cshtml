@@ -5,7 +5,14 @@
 
 <h1>@Model.MyGuide.guideTitle</h1>
 <form method="post">
-    
+
+    <iframe id="Vid"
+            width="560"
+            height="315"
+            src="@Model.MyGuide.guideVideo"
+            @*src = "https://www.youtube.com/embed/pqTcHtSSfUE"*@
+            frameborder="0"
+            allowfullscreen></iframe>
     <div>
         <label class="col-sm--2 col-form-label">Guide ID:</label>
         <label>@Model.MyGuide.guideID</label>
@@ -15,4 +22,5 @@
     <div>
         <p style="font-size:25px">@Model.MyGuide.guideInfo</p>
     </div>
+
 </form>

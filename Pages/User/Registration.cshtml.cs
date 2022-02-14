@@ -13,9 +13,13 @@ namespace EDPFinal.Pages
     {
         private readonly UserService _context;
 
+        [BindProperty]
+        public UserModel myUser { get; set; }
+
         public RegistrationModel(UserService userService)
         {
             _context = userService;
+
         }
         [BindProperty]
         [EmailAddress, RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Invalid email")]
@@ -42,20 +46,20 @@ namespace EDPFinal.Pages
                 ms.Dispose();
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return Page();
+                myUser.setPassword(Password);
+                myUser.userEmail = Email;
+                myUser.profilePictureData = Picture;
+                myUser.userName = Name;
+                myUser.userPhoneNo = Phonenum;
+
+                if (_context.AddUser(myUser))
+                {
+                    return RedirectToPage("/User/Login");
+                }
             }
-            var newUser = new UserModel()
-            {
-                userEmail = Email,
-                userPassword =Md5.GetMD5(Password),
-                userName = Name,
-                userPhoneNo = Phonenum,
-                profilePictureData = Picture
-            };
-            _context.AddUser(newUser);
-            return RedirectToPage("Login");
+            return Page();
         }
         public void OnGet()
         {

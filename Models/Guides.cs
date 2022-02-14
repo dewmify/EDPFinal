@@ -16,5 +16,7 @@ namespace EDPFinal.Models
         public string guideInfo { get; set; }
         public string guideTitle { get; set; }
         public string guideETR { get; set; }
+
+        public string guideVideo { get; set; }
     }
 }

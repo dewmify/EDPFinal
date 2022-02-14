@@ -5,6 +5,13 @@
     ViewData["Title"] = "User Details";
 }
 
+<style>
+    #pfp{
+        border-radius:50%;
+        width:150px;
+        height:150px;
+    }
+</style>
 
 <div class="titleBox">
     <h2>Details</h2>
@@ -12,9 +19,7 @@
 </div>
 <br />
 <div>
-    <img src="@ViewData["ImageDataUrl"]"
-         width="180"
-         length="180"/>
+    <img id="pfp" src="@ViewData["ImageDataUrl"]"/>
 </div>
 <br />
 <form class="formBox" method="post">

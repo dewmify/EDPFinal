@@ -14,7 +14,7 @@
 <form method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
 
-    
+
     <div>
         <label class="col-sm-2 col-form-label">Guide Title:</label>
         <input asp-for="MyGuide.guideTitle" />
@@ -24,6 +24,11 @@
         <label class="col-sm-2 col-form-label">Guide Estimated Reading Time:</label>
         <input asp-for="MyGuide.guideETR" />
         <span asp-validation-for="MyGuide.guideETR" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Video:</label>
+        <input asp-for="MyGuide.guideVideo" placeholder="Youtube Video Link Here" />
+        <span asp-validation-for="MyGuide.guideVideo" class="text-danger"></span>
     </div>
     <div>
         <label class="col-sm-2 col-form-label">Guide Information:</label>

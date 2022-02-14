@@ -95,7 +95,7 @@ namespace EDPFinal.Pages
             if (ValidateCaptcha())
             {
                 UserModel user = _context.GetUserByAccount(Email);
-                if (user == null || user.userPassword != Md5.GetMD5(Password))
+                if (user == null && user.comparePassword(Password))
                 {
                     errormessage = "Email or Password is incorrect!";
                     return Page();

@@ -1,12 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @using EDPFinal.Models;
 @inject Services.UserService _userService;
+@inject Services.AdminService _adminService;
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor  _httpContextAccessor;
 @{
     UserModel user = null;
+
     if (_httpContextAccessor.HttpContext.Session.GetInt32("ID") != null)
 
     {
+        if (_httpContextAccessor.HttpContext.Session.GetString("userType") == "admin")
+        {
+            
+        }
         user = _userService.GetUserById(Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetInt32("ID")));
     }
 
@@ -21,7 +27,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-page="/User/RegistrationJoshua">Sign up</a>
+            <a class="nav-link" asp-area="" asp-page="/User/Registration">Sign up</a>
         </li>
 
     }

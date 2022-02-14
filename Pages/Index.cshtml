@@ -101,22 +101,24 @@
         </div>
 
         <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">@item.courseTitle</h4>
-            <p class="card-text"><strong>Course Information</strong> @item.courseInfo</p>
-            <p class="card-text"><strong>Genre:</strong> @item.courseGenre</p>
-            <p class="card-text">
-                <strong>Format:</strong>
-                @{ if (item.courseFormat == false)
+            <h4 class="card-title">
+                @item.courseTitle
+        </h4>
+        <p class="card-text"><strong>Genre:</strong> @item.courseGenre</p>
+        <p class="card-text">
+            <strong>Format:</strong>
+            @{ if (item.courseFormat == false)
                     {
-                        <label>Video</label>
+                <label>Video</label>
                     }
                     else if (item.courseFormat == true)
                     {
-                        <label>Live</label>
+                <label>Live</label>
                     }
-                }
-            </p>
-            <p class="card-text"><strong>Price: $</strong>@item.coursePrice</p>
+            }
+        </p>
+        <p class="card-text"><strong>Price: $</strong>@item.coursePrice</p>
+        <p class="card-text"><strong>Course Information</strong> @item.courseInfo</p>
         </div>
         <div class="card-footer" style="background: inherit; border-color: inherit;">
             <a asp-page="/Teacher/CourseDetail" asp-route-id="@item.courseID" class="btn btn-outline-primary">View</a>
