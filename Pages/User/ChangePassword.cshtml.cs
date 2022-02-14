@@ -29,20 +29,18 @@ namespace EDPFinal.Pages
         [Required]
         public string CfmPassword { get; set; }
 
+        public UserModel myUser { get; set; }
+
         public IActionResult OnPost()
         {
-
-            //GET user
-            var id = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
-            var user = _context.GetUserById(id);
-            if (user != null)
+            if (myUser != null)
             {
 
                 //Check old password
-                if (user.userPassword == Md5.GetMD5(OldPassWord))
+                if (myUser.comparePassword(OldPassWord))
                 {
-                    user.userPassword = Md5.GetMD5(Password);
-                    _context.UpdateUser(user);
+                    myUser.userPassword = myUser.setPassword(Password);
+                    _context.UpdateUser(myUser);
                     HttpContext.Session.Remove("ID");
                     HttpContext.Session.Clear();
 
@@ -58,6 +56,7 @@ namespace EDPFinal.Pages
         {
             if (HttpContext.Session.GetInt32("ID") != null)
             {
+                myUser = _context.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
                 return Page();
             }
             return RedirectToPage("../Index");
