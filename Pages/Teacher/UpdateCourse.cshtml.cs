@@ -29,7 +29,7 @@ namespace EDPFinal.Pages.Teacher
             {
                 return RedirectToPage("../Index");
             }
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
