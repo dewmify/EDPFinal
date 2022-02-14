@@ -52,7 +52,7 @@ namespace EDPFinal.Pages.Admin
                 string mimeType = "application/pdf";
                 return new FileContentResult(byteArr, mimeType)
                 {
-                    FileDownloadName = $"Resume {MyUser.userName}.pdf"
+                    FileDownloadName = $"Resume {user.userName}.pdf"
                 };
             }
             
