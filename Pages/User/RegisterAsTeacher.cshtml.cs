@@ -28,9 +28,12 @@ namespace EDPFinal.Pages
 
         public void OnGet()
         {
-            if(HttpContext.Session.GetString("userType") != "True")
+            if (HttpContext.Session.GetInt32("ID") == myUser.userID)
             {
-                myUser = _svc.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
+                if (HttpContext.Session.GetString("userType") != "True")
+                {
+                    myUser = _svc.GetUserById(Convert.ToInt32(HttpContext.Session.GetInt32("ID")));
+                }
             }
         }
 

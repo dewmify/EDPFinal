@@ -54,8 +54,13 @@ namespace EDPFinal.Pages
 
 
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetInt32("ID") != null)
+            {
+                return Page();
+            }
+            return RedirectToPage("../Index");
         }
     }
 }
