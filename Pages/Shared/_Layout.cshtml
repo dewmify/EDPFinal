@@ -21,6 +21,8 @@
                     <ul nav="id" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         @if (Context.Session.GetInt32("ID") == null)
                         {
+                            <a class="nav-link" asp-area="" asp-page="/Search">Search</a>
+
                             <div class="navbar-collapse">
                                 <partial name="_LoginPartial" />
                             </div>
@@ -75,6 +77,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Admin/UserList">List of Users</a>
                             </li>
+                            <div class="navbar-collapse">
+                                <partial name="_LoginPartial" />
+                            </div>
                         }
                         @*<li class="nav-item">
             <a class="nav-link" asp-area="" asp-page="/SuperAdmin/CreateAdmin">Create Admin</a>

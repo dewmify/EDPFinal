@@ -31,6 +31,29 @@
         </li>
 
     }
+    else if (_httpContextAccessor.HttpContext.Session.GetString("userType") == "admin")
+    {
+        <li class="nav-item dropdown">
+
+            <a id="navbarDropdown" class="dropdown-toggle user_name__show" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+
+                <span class="user-username">Admin</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <ul class="m-dropdown-menu--personal flex--between">
+                    <li class="box--bgwhite10 block__link" style="list-style:none">
+                        <a class="" style="color:#000" asp-page="/User/Login" asp-page-handler="Logout">
+
+
+                            <span>Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    }
     else
 
     {
