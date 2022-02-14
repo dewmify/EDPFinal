@@ -11,32 +11,34 @@ namespace EDPFinal.Pages
 {
     public class RegistrationModel : PageModel
     {
-        private readonly UserService _context;
+        private readonly UserService _svc;
 
-        [BindProperty]
-        public UserModel myUser { get; set; }
-
-        public RegistrationModel(UserService userService)
-        {
-            _context = userService;
-
-        }
         [BindProperty]
         [EmailAddress, RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Invalid email")]
         public string Email { get; set; }
-        [BindProperty] public string Password { get;set;}
+        [BindProperty] public string Password { get; set; }
         [BindProperty] public string CfmPassword { get; set; }
         [BindProperty] public string Name { get; set; }
 
         [BindProperty]
-        [StringLength(maximumLength:8,MinimumLength =8)]
+        public UserModel myUser { get; set; }
+
+        [BindProperty]
+        [StringLength(maximumLength: 8, MinimumLength = 8)]
         public string Phonenum { get; set; }
-
         public byte[] Picture { get; set; }
+        public RegistrationModel(UserService service)
+        {
+            _svc = service;
+        }
 
+        public void OnGet()
+        {
+
+        }
         public IActionResult OnPost()
         {
-            foreach(var file in Request.Form.Files)
+            foreach (var file in Request.Form.Files)
             {
                 MemoryStream ms = new MemoryStream();
                 file.CopyTo(ms);
@@ -54,15 +56,12 @@ namespace EDPFinal.Pages
                 myUser.userName = Name;
                 myUser.userPhoneNo = Phonenum;
 
-                if (_context.AddUser(myUser))
+                if (_svc.AddUser(myUser))
                 {
                     return RedirectToPage("/User/Login");
                 }
             }
             return Page();
-        }
-        public void OnGet()
-        {
         }
     }
 }

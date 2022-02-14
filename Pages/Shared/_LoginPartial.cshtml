@@ -20,7 +20,7 @@
 
 
 <ul class="navbar-nav ml-auto">
-    @if (user == null)
+    @if (user == null && _httpContextAccessor.HttpContext.Session.GetString("userType") != "admin")
     {
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-page="/User/Login">Log in</a>

@@ -50,6 +50,7 @@ namespace EDPFinal.Pages.User
         public IActionResult OnGetLogOut()
         {
             HttpContext.Session.Remove("Email");
+            HttpContext.Session.Clear();
             return Page();
         }
         public void OnGet()

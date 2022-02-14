@@ -9,17 +9,37 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace EDPFinal.Pages
 {
     public class LoginModel : PageModel
     {
-        private readonly UserService _context;
+        private readonly ILogger<LoginModel> _logger;
+        private UserService _svc;
 
-        public LoginModel(UserService userService)
+        [BindProperty]
+        public UserModel myUser { get; set; }
+        [BindProperty]
+        public string Email { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
+        [BindProperty]
+        public string errorMessage { get; set; }
+        public LoginModel(ILogger<LoginModel> logger, UserService service)
         {
-            _context = userService;
+            _logger = logger;
+            _svc = service;
         }
+
+        public string errormessage { get; set; }
+
+        private class MyObject
+        {
+            public string success { get; set; }
+            public List<string> ErrorMessage { get; set; }
+        }
+
         public bool ValidateCaptcha()
         {
             bool result = true;
@@ -67,26 +87,7 @@ namespace EDPFinal.Pages
                 throw ex;
             }
         }
-        private class MyObject
-        {
-            public string success { get; set; }
-            public List<string> ErrorMessage { get; set; }
-        }
-        [BindProperty] public string Email { get; set; }
-        
-        [BindProperty] 
-        
-        public string Password { get; set; }
-        [BindProperty] public string Name { get; set; }
-        [BindProperty] public string Phonenum { get; set; }
 
-        public string errormessage { get; set; }
-
-        //public User GetUserByAccount(string account)
-        //{
-        //    var userObject = _context.Users.SingleOrDefault(o => o.userEmail == account || o.userPhoneNo == account);
-        //    return userObject;
-        //}
         public IActionResult OnPost()
         {
 
@@ -94,16 +95,18 @@ namespace EDPFinal.Pages
 
             if (ValidateCaptcha())
             {
-                UserModel user = _context.GetUserByAccount(Email);
-                if (user == null && user.comparePassword(Password))
+                myUser = _svc.GetUserByEmail(Email);
+                if (Email.Equals(myUser.userEmail) && myUser.comparePassword(Password))
                 {
-                    errormessage = "Email or Password is incorrect!";
+                    HttpContext.Session.SetInt32("ID", myUser.userID);
+                    HttpContext.Session.SetString("userType", myUser.userType.ToString());
+                    return RedirectToPage("../Index");
+                }
+                else
+                {
+                    errorMessage = "Incorrect login details";
                     return Page();
                 }
-
-                HttpContext.Session.SetInt32("ID", user.userID);
-                HttpContext.Session.SetString("userType", user.userType.ToString());
-                return RedirectToPage("../Index");
             }
             else
             {
@@ -114,6 +117,7 @@ namespace EDPFinal.Pages
         public IActionResult OnGetLogOut()
         {
             HttpContext.Session.Remove("ID");
+            HttpContext.Session.Clear();
             return Page();
         }
         public void OnGet()

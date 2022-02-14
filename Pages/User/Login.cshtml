@@ -10,7 +10,7 @@
         </div>
         <div class="usernameBox">
             <span class="labelBox">Email</span><br />
-            <input type="text" asp-for="Email" name="Email" class="Email" placeholder="Enter email/phone number" />
+            <input type="text" asp-for="Email" name="Email" class="Email" placeholder="Enter email" />
         </div>
         <br />
         <div class="passwordBox">
@@ -23,8 +23,7 @@
         <p class="text-danger">@Model.errormessage</p>
         <br />
         <div class="bottomBox">
-            <br />
-            <a href="/Admin/Login" class="fonttip">Logging in as admin?</a><asp:Button ID="Button1" runat="server" BackColor="#993399" Font-Size="Larger" ForeColor="White" Height="44px" OnClick="loginAsAdmin" Text="Login" Width="144px" />
+            <a href="/Admin/Login" class="fonttip">Logging in as admin?</a><asp:Button ID="Button1" runat="server" BackColor="#993399" Font-Size="Larger" ForeColor="White" Height="44px" Text="Login" Width="144px" />
 
         </div>
 
@@ -34,7 +33,6 @@
         <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
     </form>
 </body>
-
 @section Scripts
     {
 
